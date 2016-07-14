@@ -1,0 +1,41 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-image: url('http://2.bp.blogspot.com/_VZZE7p2GUjs/SEnKL9DHBxI/AAAAAAAAAN0/FMhKkKzrBN0/s400/Meme');
+}
+
+input {
+  margin: 10px;
+  border-radius: 10px;
+}
+
+form {
+  position: relative;
+  text-align: center;
+  width: 80%;
+  top: 37%;
+  left: 9%;
+}
+
+button {
+  margin: 10px;
+  border-radius: 10px;
+}
+
+#app {
+  position: relative;
+  height: 30%;
+  width: 40%;
+  left: 30%;
+  top: 30%;
+}
+
+.container {
+  /*background-color: white;*/
+  background:rgba(255,255,255,0.7);
+  height: 100%;
+  width: 100%;
+}
