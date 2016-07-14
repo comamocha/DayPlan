@@ -34,12 +34,12 @@ class App extends React.Component {
     }
    render() {
       return (
-         <div>
-         <img src='http://2.bp.blogspot.com/_VZZE7p2GUjs/SEnKL9DHBxI/AAAAAAAAAN0/FMhKkKzrBN0/s400/Meme' />
+         <div className='container'>
           <nav className='navigation'></nav>
             <form>
-              <input className='login' placeholder='Enter your username here' onChange={this.handleUsernameChange}/>
-              <input className='password' placeholder='Enter your password here' onChange={this.handlePasswordChange}/>
+              <input className='login' placeholder='Username' onChange={this.handleUsernameChange}/>
+              <input className='password' type="password" placeholder='Password' onChange={this.handlePasswordChange}/>
+              <div></div>
               <button className='signIn' type='button' onClick={this.handleSubmit}>Sign In</button>
               <button className='signUp'>Create a new account</button>
               <div>{this.props.username}</div>
