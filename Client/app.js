@@ -25,6 +25,7 @@ import { Router, Route, Link, browserHistory, IndexRoute  } from 'react-router'
 ReactDOM.render((
    <Router history = {browserHistory}>
       <Route path = "/" component = {App}>
+       <IndexRoute component = {Login} />
        <Route path = "/home" component = {Main} />
       <Route path = "/Login" component = {Login} />
       </Route>
