@@ -1,7 +1,14 @@
 var Promise = require('bluebird').Promise;
-var db = require('../db');
+var db = require('./db/dbHandler.js');
 var query = Promise.promisify(db.query, {context: db});
 var insert = Promise.promisify(db.insert, {context: db});
+
+db.connect(function(error) {
+  if (error) {
+    throw error;
+  }
+  console.log('connection made! (yayyyy)');
+});
 
 module.exports = {
   signup: {
@@ -14,8 +21,14 @@ module.exports = {
   },
   
   login: {
-    post: function(data) {
-      
+    checkInfo: function(data) {
+      query('SELECT password FROM Users WHERE Users.username = data.username')
+        .then(function(pass) {
+          if (pass === data.password) {
+            return true;
+          }
+          return false;
+        })
     }
   },
   
