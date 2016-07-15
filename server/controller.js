@@ -1,4 +1,5 @@
-var model = require('model.js');
+var model = require('./model.js');
+var bluebird = require('bluebird');
 
 module.exports = {
   signup: {
@@ -12,10 +13,11 @@ module.exports = {
   
   login: {
     get: function(req, res) {
-      res.redirect('/login.html'); /* REDIRECT if static page; RENDER if new view */
+      res.redirect('../Client/login.html'); /* REDIRECT if static page; RENDER if new view */
     },
     post: function(req, res) {
-      model.login.post();      
+      res.statusCode = 200;
+      res.send(model.login.permitLogin(req.query));
     }
   },
   
