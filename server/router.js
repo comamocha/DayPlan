@@ -1,5 +1,5 @@
 var router = require('express').Router();
-var controller = require('controller.js');
+var controller = require('./controller.js');
 
 router.get('/signup', controller.signup.get);
 router.post('/signup', controller.signup.post);
@@ -17,7 +17,7 @@ router.delete('/itinerary', controller.itinerary.delete);
 router.get('/list', controller.list.get);
 
 //API Calls
-router.get('/yelp', controller.yelp.get);
-router.get('/map', controller.map.get);
+router.get('/yelp', controller.api.yelp);
+router.get('/map', controller.api.map);
 
-modules.exports = router;
+module.exports = router;
