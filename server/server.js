@@ -10,7 +10,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use('/', router);
 //below may change to compiled folder for react
-app.use(express.static(__dirname + '../client')); 
+app.use(express.static(__dirname + '/../client')); 
 
 
 app.listen(port, function() {
