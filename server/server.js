@@ -9,7 +9,7 @@ var port = 3000;
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use('/', router);
-//below may change to compiled folder for react
+// below may change to compiled folder for react
 app.use(express.static(__dirname + '/../client')); 
 
 
