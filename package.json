@@ -5,7 +5,9 @@
   "main": "app",
   "scripts": {
     "test": "test",
-    "start": "webpack-dev-server --hot"
+    "start": "webpack-dev-server --hot",
+    "build": "webpack --progress --colors",
+    "copy": " cp ./Client/index.html /var/www/html | cp ./Client/index.js /var/www/html | cp ./Client/styles.css /var/www/html "
   },
   "author": "COMA",
   "license": "ISC",
