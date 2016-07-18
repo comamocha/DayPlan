@@ -3,27 +3,33 @@ import YelpComponent from './YelpComponent.jsx';
 import ItineraryComponent from './ItineraryComponent.jsx';
 import MapComponent from './MapComponent.jsx'
 import ItineraryListComponent from './ItineraryListComponent.jsx'
+import ItineraryOptionsComponent from './ItineraryOptionsComponent.jsx'
+
 
 class Main extends React.Component {
    
     render() {
         return (
             <div>
-            <div>
+            <div id="yelp">
               <YelpComponent/>
             </div>
-            <div>
+            <div id="itinerary">
               <ItineraryComponent/>
             </div>
               
             <div>
      
-              <MapComponent/>
+              <MapComponent id="map"/>
             </div>
             <div>
-              <ItineraryListComponent/>
+              <ItineraryListComponent id="itineraryList"/>
+            </div>
+            <div>
+              <ItineraryOptionsComponent id="itineraryOptions"/>
             </div>
                </div>
+
         );
     }
 }
