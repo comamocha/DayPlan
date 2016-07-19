@@ -38,14 +38,23 @@ class Login extends React.Component {
     render() {
           return (
          <div className='container'>
-    
-            <form>
-              <input className='login' placeholder='Username' onChange={this.handleUsernameChange}/>
-              <input className='password' type="password" placeholder='Password' onChange={this.handlePasswordChange}/>
-              <div></div>
-              <button className='signIn' type='button' onClick={this.handleSubmit}>Sign In</button>
-              <button className='signUp'>Create a new account</button>
-              <div>{this.props.username}</div>
+            <form className="form-horizontal">
+              <fieldset>
+                <div className="form-group">
+                  <label for="inputEmail" className="col-lg-2 control-label">Username</label>
+                  <div className="col-lg-10">
+                    <input type="text" className="form-control" id="focusedInput" placeholder="Username" onChange={this.handleUsernameChange}/>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label for="inputPassword" className="col-lg-2 control-label">Password</label>
+                  <div className="col-lg-10">
+                    <input type="password" className="form-control" id="inputPassword" placeholder="Password" onChange={this.handlePasswordChange}/>
+                  </div>
+                </div>
+                <button className='signIn btn btn-success' type='button' onClick={this.handleSubmit}>Sign In</button>
+                <button className='signUp btn btn-danger'>Sign Up</button>
+              </fieldset>
             </form>
          </div>
       );
