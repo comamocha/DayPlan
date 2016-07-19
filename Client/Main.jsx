@@ -7,6 +7,7 @@ import ItineraryOptionsComponent from './Components/ItineraryOptionsComponent.js
 
 
 class Main extends React.Component {
+<<<<<<< eb28ec6aca586fdaf50e9d6ee83ec8d98ef56d69
   constructor(props) {
     super(props)
     this.state = {
@@ -41,8 +42,6 @@ class Main extends React.Component {
       }],
       toggleOptions: false,
       eventId: null
-    }
-  }
 
   deleteEvent(eventId) {
     var list = [];
