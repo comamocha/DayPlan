@@ -37,23 +37,28 @@ class Login extends React.Component {
 
     render() {
           return (
-         <div className='container'>
-            <form className="form-horizontal">
+         <div id="loginForm" className="col-md-6 col-md-offset-3">
+            <form className="form-horizontal col-md-8 col-md-offset-2">
               <fieldset>
                 <div className="form-group">
-                  <label for="inputEmail" className="col-lg-2 control-label">Username</label>
-                  <div className="col-lg-10">
-                    <input type="text" className="form-control" id="focusedInput" placeholder="Username" onChange={this.handleUsernameChange}/>
+                  <label className="control-label">Username</label>
+                  <div>
+                    <input type="text" className="form-control" placeholder="Username" onChange={this.handleUsernameChange}/>
                   </div>
                 </div>
                 <div className="form-group">
-                  <label for="inputPassword" className="col-lg-2 control-label">Password</label>
-                  <div className="col-lg-10">
-                    <input type="password" className="form-control" id="inputPassword" placeholder="Password" onChange={this.handlePasswordChange}/>
+                  <label className="control-label">Password</label>
+                  <div>
+                    <input type="password" className="form-control" placeholder="Password" onChange={this.handlePasswordChange}/>
                   </div>
                 </div>
-                <button className='signIn btn btn-success' type='button' onClick={this.handleSubmit}>Sign In</button>
-                <button className='signUp btn btn-danger'>Sign Up</button>
+                <button className='signIn btn btn-success' type='button' onClick={this.handleSubmit}>Sign In!</button>
+                <div className="row">
+                  <label className="control-label">Not a member?</label>
+                </div>
+                <div className="row">
+                  <button className='signUp btn btn-danger'>Sign Up!</button>
+                </div>
               </fieldset>
             </form>
          </div>

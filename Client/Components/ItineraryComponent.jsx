@@ -3,44 +3,19 @@ import React from 'react';
 class ItineraryEvent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      showModal: true,
-      modalInfo: null
-    }
-  }
-
-  editEvent() {
-
-  }
-
-  deleteEvent() {
-
-  }
-
-  onClickModal() {
-    this.setState({
-      showModal: !this.state.showModal,
-      modalInfo: this.props.eventInfo
-    });
-  }
-
-  onEventMouseLeave() {
-    this.setState({
-      hovering: false
-    });
   }
 
   render() {
 
     return (
-      <tr onClick={this.onClickModal.bind(this)}>
+      <tr>
           <td>{this.props.eventInfo['begin']}</td>
           <td>{this.props.eventInfo['end']}</td>
           <td>{this.props.eventInfo['location']}</td>
           <td>{this.props.eventInfo['name']}</td>
           <td>{this.props.eventInfo['description']}</td>
-          <td><input type="checkbox" name="edit" onClick={this.editEvent.bind(this)} /></td>
-          <td><input type="checkbox" name="delete" onClick={this.deleteEvent.bind(this)} /></td>
+          <td><input type="checkbox" name="edit" onClick={this.props.editEvent.bind(this, this.props.eventInfo['key'])} /></td>
+          <td><input type="checkbox" name="delete" onClick={this.props.deleteEvent.bind(this, this.props.eventInfo['key'])} /></td>
       </tr>
     );
   }
@@ -56,7 +31,7 @@ class ItineraryComponent extends React.Component {
       url: '/list',
       dataType: 'json',
       type: 'POST',
-      data: this.props.eventInfo,
+      data: this.props.list,
       success: function(data) {
         alert('Itinerary saved!');
       },
@@ -86,12 +61,16 @@ class ItineraryComponent extends React.Component {
           </thead>
           <tbody>
             {this.props.list.map(event => 
-              <ItineraryEvent key={event.key} eventInfo={event}/>
+              <ItineraryEvent key={event.key} eventInfo={event}
+                editEvent={this.props.editEvent}
+                deleteEvent={this.props.deleteEvent}/>
             )}
         </tbody>
         </table>
         <div className="center-align">
-          <button className="btn btn-success" onClick={this.saveItinerary.bind(this)}>Save Itinerary</button>
+          <button className="btn btn-success" 
+            onClick={this.saveItinerary.bind(this)}
+          >Save Itinerary</button>
         </div>
       </div>
     )

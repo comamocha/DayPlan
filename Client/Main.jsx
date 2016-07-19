@@ -38,8 +38,25 @@ class Main extends React.Component {
         location: '375 Bush St, San Francisco, CA 94104',
         name: 'Pagan Idol',
         description: 'Continued drinking.'
-      }]
+      }],
+      toggleOptions: false,
+      eventId: null
     }
+  }
+
+  deleteEvent(eventId) {
+    var list = [];
+    this.state.list.forEach(function(val, key) {
+      if (val['key'] !== eventId) {
+        list.push(val);
+      }
+    });
+    this.setState({list: list})
+  }
+
+  editEvent(eventId) {
+    this.setState({toggleOptions: !this.state.toggleOptions});
+    this.setState({eventId: eventId});
   }
    
   render() {
@@ -51,7 +68,9 @@ class Main extends React.Component {
           </div>
 
           <div id="itinerary" className="col-md-6">
-            <ItineraryComponent list={this.state.list}/>
+            <ItineraryComponent list={this.state.list} 
+              deleteEvent={this.deleteEvent.bind(this)} 
+              editEvent={this.editEvent.bind(this)}/>
           </div> 
         </div>
 
