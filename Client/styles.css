@@ -42,7 +42,7 @@ button {
 
 footer {
   position: relative;
-  margin-top: -50px; /* negative value of footer height */
+  margin-top: -75px; /* negative value of footer height */
   height: 50px;
   clear:both;
   padding: 20px 20px;
@@ -68,7 +68,58 @@ footer {
 }
 
 #loginForm {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.65);
   border-radius: 25px;
   padding: 25px;
+  color: white;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  padding: 10px;
+  text-align: center;
+}
+
+#videoBackgroundContainer {
+  position: relative;
+  margin: 0;
+  height: 400px; 
+  background-color: #282828;
+  overflow: hidden;
+}
+
+#videoBackground {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 1000px;
+  height: auto;
+  transform: translate(-50%, -50%);
+}
+
+#nav {
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 0;
+}
+
+.navbar-collapse.collapse {
+  display: block!important;
+}
+
+.navbar-nav>li, .navbar-nav {
+  float: left !important;
+}
+
+.navbar-nav.navbar-right:last-child {
+  margin-right: -15px !important;
+}
+
+.navbar-right {
+  float: right!important;
+}
+
+.actualMap {
+  height: 400px;
 }

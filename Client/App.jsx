@@ -14,9 +14,9 @@ class App extends React.Component {
   render() {
     return (
       
-      <div className="col-md-10 col-md-offset-1">
+      <div className="col-xs-10 col-xs-offset-1">
 
-        <nav className="navbar navbar-default">
+        <nav id="nav" className="navbar navbar-default">
           <ul className="nav navbar-nav">
             <li><Link to='/home'>Home</Link></li>
             <li><Link to='/'>App</Link></li>
@@ -28,7 +28,7 @@ class App extends React.Component {
             {this.props.children}
         </div>
 
-        <footer>
+        <footer id="footer">
           <p>© 2016 COMAMOCHA, Inc.</p>
         </footer>
 
