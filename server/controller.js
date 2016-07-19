@@ -43,10 +43,32 @@ module.exports = {
   },
 
   api: {
-    yelp: function(req, res) {
-      model.api.yelp();
+    AutocompleteYelp: function (req, res) {
+      console.log("Trying to work on a  AutocompleteYelp call.");
+      var query = req.query.search; //Parses the url yelp?search=deli
+      model.api.yelp.AutocompleteYelp(query, req, res);
     },
-    map: function(req, res) {
+    ReviewsYelp: function (req, res) {
+      console.log("Trying to work on a  AutocompleteYelp call.");
+      var query = req.query.search; //Parses the url ReviewsYelp?search=deli
+      model.api.yelp.ReviewsYelp(query, req, res);
+    },
+    BusinessYelp: function (req, res) {
+      console.log("Trying to work on a  BusinessYelp call.");
+      var query = req.query.search; //Parses the url BusinessYelp?search=?13028373
+      model.api.yelp.BusinessYelp(query, req, res);
+    },
+    PhoneSearchYelp: function (req, res) {
+      console.log("Trying to work on a  PhoneSearchYelp call.");
+      var query = req.query.search; //Parses the url PhoneSearchYelp?search=?13028373
+      model.api.yelp.PhoneSearchYelp(query, req, res);
+    },
+    getAuth2Token: function (req, res) {
+      console.log("Trying to work on a  PhoneSearchYelp call.");
+      var query = req.query.search; //Parses the url getAuth2Token?search=?13028373
+      model.api.yelp.getAuth2Token(query, req, res);
+    },
+    map: function (req, res) {
       model.api.map();
     }
   }
