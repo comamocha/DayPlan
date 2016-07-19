@@ -11,103 +11,88 @@ class ItineraryOptionsComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Location: "Hollywood",
-      Start: "1:00",
-      End: "2:00",
-      Date: "7/19/2016",
-      Info: "See the stars",
-      ItID: 12,
-      EventId: 1
+      key: this.props.event.key,
+      begin: this.props.event.begin,
+      end: "1:00 pm",
+      location: this.props.event.location,
+      name: this.props.event.name,
+      description: this.props.event.description
     }
   }
 
   getEventFromItin (options) {
     this.setState({
       Location: options.location,
-      Start: options.start,
-      End: options.end,
+      begin: options.begin,
+      end: options.end,
       Date: options.date,
-      Info: options.info,
+      info: options.info,
       ItID: options.itId
     })
   }
 
-
-  // editItin(e){
-  //   console.log(e.target.placeholder)
-  //   this.setState({e.target.placeholder: e.target.value})  
-  // }
-
   editLocation(e){
-    this.setState({Location: e.target.value})  
+    this.setState({location: e.target.value})  
   }
 
-  editStart(e){
-    this.setState({Start: e.target.value})  
+  editBegin(e){
+    this.setState({begin: e.target.value})  
   }
 
   editEnd(e){
-    this.setState({End: e.target.value})  
+    this.setState({end: e.target.value})  
   }
 
-  editDate(e){
-    this.setState({Date: e.target.value})  
+  editName(e){
+    this.setState({name: e.target.value})  
   }
 
-  editInfo(e){
-    this.setState({Info: e.target.value})  
-  }
-
-
-  sendEventToMain(){
-    //collect data from our state
-    //send this date back to toplevel state so use a passed down function aka this.props.someFunction
-    var obj = this.state;
-    // this.props.someFunction(obj)
-    console.log(obj)
+  editDescription(e){
+    this.setState({info: e.target.value})  
   }
 
   render() {
+    var obj = this.state;
     return (
       <div >
         <form >
           <div >
             <label>Location</label>
-            <input placeholder="Location" type="text" defaultValue={this.state.Location} onChange={this.editLocation.bind(this)}/>
+            <input placeholder="Location" type="text" defaultValue={this.state.location} onChange={this.editLocation.bind(this)}/>
           </div>
           <div>
-            <label>Start : </label>
-            <select defaultValue={this.state.Start} onChange={this.editStart.bind(this)}> 
+            <label>Begin : </label>
+            <select defaultValue={this.state.begin.split(' ')[0]} onChange={this.editBegin.bind(this)}> 
               {times.map( (time) => {
                 return <option>{time}</option>
               })} 
-            </select>
-            <select >
-              <option>A.M.</option>
-              <option>P.M.</option>
+            </select >
+            <select defaultValue={this.state.begin.split(' ')[1]}>
+              <option>am</option>
+              <option>pm</option>
             </select>
           </div>
           <div>
             <label>End : </label>
-            <select defaultValue={this.state.End} onChange={this.editEnd.bind(this)}> 
+            <select defaultValue={this.state.end.split(' ')[0]} onChange={this.editEnd.bind(this)}> 
               {times.map( (time) => {
                 return <option>{time}</option>
               })} 
             </select>
-            <select>
-              <option>A.M.</option>
-              <option>P.M.</option>
+            <select defaultValue={this.state.end.split(' ')[1]}>
+              <option>am</option>
+              <option>pm</option>
             </select>
           </div>
           <div >
-            <label>Date :</label>
-            <input placeholder="Date" defaultValue={this.state.Date} onChange={this.editDate.bind(this)}/>
+            <label>Name :</label>
+            <input placeholder="name" defaultValue={this.state.name} onChange={this.editName.bind(this)}/>
           </div>
           <div >
-            <label >Info</label>
-            <input placeholder="Info" defaultValue={this.state.Info} onChange={this.editInfo.bind(this)}/>
+            <label >Description</label>
+            <input placeholder="Description" defaultValue={this.state.description} onChange={this.editDescription.bind(this)}/>
           </div>
-          <button type="button" onClick={this.sendEventToMain.bind(this)}>Submit</button>
+          <button type="button" onClick={this.props.edit.bind(this, obj)}>Submit</button>
           <button type="button" >Delete</button>
         </form>
       </div>
