@@ -17,7 +17,11 @@ router.delete('/itinerary', controller.itinerary.delete);
 router.get('/list', controller.list.get);
 
 //API Calls
-router.get('/yelp', controller.api.yelp);
+router.get('/AutocompleteYelp', controller.api.AutocompleteYelp);
+router.get('/ReviewsYelp', controller.api.ReviewsYelp);
+router.get('/BusinessYelp', controller.api.BusinessYelp);
+router.get('/PhoneSearchYelp', controller.api.PhoneSearchYelp);
+router.get('/getAuth2Token', controller.api.getAuth2Token);
 router.get('/map', controller.api.map);
 
 module.exports = router;
