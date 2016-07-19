@@ -1,9 +1,13 @@
 import React from 'react';
 
-var times = [ "12:00", "1:00", "2:00",
-              "3:00", "4:00", "5:00",
-              "6:00", "7:00", "8:00",
-              "9:00", "10:00", "11:00" ]
+var times = [ "12:00 A.M", "1:00 A.M", "2:00 A.M",
+              "3:00 A.M", "4:00 A.M", "5:00 A.M",
+              "6:00 A.M", "7:00 A.M", "8:00 A.M",
+              "9:00 A.M", "10:00 A.M", "11:00 A.M",
+              "12:00 P.M", "1:00 P.M", "2:00 P.M",
+              "3:00 P.M", "4:00 P.M", "5:00 P.M",
+              "6:00 P.M", "7:00 P.M", "8:00 P.M",
+              "9:00 P.M", "10:00 P.M", "11:00 P.M" ]
 
 
 class ItineraryOptionsComponent extends React.Component {
@@ -13,23 +17,23 @@ class ItineraryOptionsComponent extends React.Component {
     this.state = {
       key: this.props.event.key,
       begin: this.props.event.begin,
-      end: "1:00 pm",
+      end: this.props.event.end,
       location: this.props.event.location,
       name: this.props.event.name,
       description: this.props.event.description
     }
   }
 
-  getEventFromItin (options) {
-    this.setState({
-      Location: options.location,
-      begin: options.begin,
-      end: options.end,
-      Date: options.date,
-      info: options.info,
-      ItID: options.itId
-    })
-  }
+  // getEventFromItin (options) {
+  //   this.setState({
+  //     Location: options.location,
+  //     begin: options.begin,
+  //     end: options.end,
+  //     Date: options.date,
+  //     info: options.info,
+  //     ItID: options.itId
+  //   })
+  // }
 
   editLocation(e){
     this.setState({location: e.target.value})  
@@ -48,7 +52,7 @@ class ItineraryOptionsComponent extends React.Component {
   }
 
   editDescription(e){
-    this.setState({info: e.target.value})  
+    this.setState({description: e.target.value})  
   }
 
   render() {
@@ -62,27 +66,19 @@ class ItineraryOptionsComponent extends React.Component {
           </div>
           <div>
             <label>Begin : </label>
-            <select defaultValue={this.state.begin.split(' ')[0]} onChange={this.editBegin.bind(this)}> 
+            <select defaultValue={this.state.begin} onChange={this.editBegin.bind(this)}> 
               {times.map( (time) => {
                 return <option>{time}</option>
               })} 
             </select >
-            <select defaultValue={this.state.begin.split(' ')[1]}>
-              <option>am</option>
-              <option>pm</option>
-            </select>
           </div>
           <div>
             <label>End : </label>
-            <select defaultValue={this.state.end.split(' ')[0]} onChange={this.editEnd.bind(this)}> 
+            <select defaultValue={this.state.end} onChange={this.editEnd.bind(this)}> 
               {times.map( (time) => {
                 return <option>{time}</option>
               })} 
-            </select>
-            <select defaultValue={this.state.end.split(' ')[1]}>
-              <option>am</option>
-              <option>pm</option>
-            </select>
+            </select>  
           </div>
           <div >
             <label>Name :</label>
