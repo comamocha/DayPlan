@@ -14,8 +14,8 @@ class ItineraryEvent extends React.Component {
           <td>{this.props.eventInfo['location']}</td>
           <td>{this.props.eventInfo['name']}</td>
           <td>{this.props.eventInfo['description']}</td>
-          <td><input type="checkbox" name="edit" onClick={this.props.editEvent.bind(this, this.props.eventInfo['key'])} /></td>
-          <td><input type="checkbox" name="delete" onClick={this.props.deleteEvent.bind(this, this.props.eventInfo['key'])} /></td>
+          <td><button type="button" className="btn btn-xs btn-warning" name="edit" onClick={this.props.editEvent.bind(this, this.props.eventInfo['key'])}>Edit</button></td>
+          <td><button type="button" className="btn btn-xs btn-danger" name="delete" onClick={this.props.deleteEvent.bind(this, this.props.eventInfo['key'])}>Delete</button></td>
       </tr>
     );
   }

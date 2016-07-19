@@ -1,4 +1,6 @@
 import React from 'react';
+import Map, {GoogleApiWrapper} from 'google-maps-react'
+
 
 class MapComponent extends React.Component {
   constructor(props) {
@@ -7,14 +9,13 @@ class MapComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        google maps should populate only items listed in our itinerary;
-        each item will be represented by a pin/icon indicating location name and time
-        example of google maps:
-       <a href='https://postimg.org/image/jer45vu6f/' target='_blank'><img src='https://s31.postimg.org/jer45vu6f/Screen_Shot_2016_07_15_at_3_41_34_PM.png' alt='postimage'/></a>
+      <div className="actualMap">
+        <Map google={this.props.google} />
       </div>
     );
   }
 }
 
-export default MapComponent;
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyDy99yamlo6hMVjYfIC5IVNuomaitOMFPg'
+})(MapComponent)

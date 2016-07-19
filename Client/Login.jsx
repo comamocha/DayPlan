@@ -37,8 +37,16 @@ class Login extends React.Component {
 
     render() {
           return (
-         <div id="loginForm" className="col-md-6 col-md-offset-3">
-            <form className="form-horizontal col-md-8 col-md-offset-2">
+        <div>
+          <div id="videoBackgroundContainer">
+            <video id="videoBackground" autoPlay muted loop>
+              <source src="./lib/video/slowmoheadla.mp4" type="video/mp4" />
+              <source src="./lib/video/slowmoheadla.ogv" type="video/ogv" />
+              Your browser doesn't support HTML5 video.
+            </video>
+          </div>
+          <div id="loginForm" className="col-xs-6 col-xs-offset-3">
+            <form className="form-horizontal col-xs-8 col-xs-offset-2">
               <fieldset>
                 <div className="form-group">
                   <label className="control-label">Username</label>
@@ -61,7 +69,8 @@ class Login extends React.Component {
                 </div>
               </fieldset>
             </form>
-         </div>
+          </div>
+        </div>
       );
     }
 }
