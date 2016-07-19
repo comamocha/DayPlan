@@ -16,7 +16,7 @@ class ItineraryOptionsComponent extends React.Component {
       End: "2:00",
       Date: "7/19/2016",
       Info: "See the stars",
-      ItID: 121,
+      ItID: 12,
       EventId: 1
     }
   }
