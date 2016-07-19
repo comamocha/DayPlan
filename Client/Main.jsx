@@ -11,43 +11,47 @@ class Main extends React.Component {
     super(props)
     this.state = {
       list: [{
-        key: 1,
-        begin: '7:00pm',
-        end: '8:15pm',
+        key: 0,
+        begin: '7:00 pm',
+        end: '8:00 pm',
+        //possibly add date slot 
         location: '375 Bush St, San Francisco, CA 94104',
         name: 'Pagan Idol',
         description: 'A couple friends and I are going to get wasted.'
       }, {
+        key: 1,
+        begin: '8:00 pm',
+        end: '12:00 pm',
+        location: '375 Bush St, San Francisco, CA 94104',
+        name: 'Pagan Idol',
+        description: 'Continued drinking.'
+      }, {
         key: 2,
-        begin: '8:15pm',
-        end: '12:00pm',
+        begin: '12:00 pm',
+        end: '1:00 pm',
         location: '375 Bush St, San Francisco, CA 94104',
         name: 'Pagan Idol',
         description: 'Continued drinking.'
       }, {
         key: 3,
-        begin: '12:00pm',
-        end: '12:00pm',
-        location: '375 Bush St, San Francisco, CA 94104',
-        name: 'Pagan Idol',
-        description: 'Continued drinking.'
-      }, {
-        key: 4,
-        begin: '1:00am',
-        end: '12:00pm',
+        begin: '11:00 am',
+        end: '12:00 pm',
         location: '375 Bush St, San Francisco, CA 94104',
         name: 'Pagan Idol',
         description: 'Continued drinking.'
       }],
       toggleOptions: false,
-      eventId: null
+      eventId: 3
     }
   }
 
   deleteEvent(eventId) {
     var list = [];
     this.state.list.forEach(function(val, key) {
+      var i = 0;
       if (val['key'] !== eventId) {
+        i++;
+        val.key = i 
         list.push(val);
       }
     });
@@ -58,8 +62,33 @@ class Main extends React.Component {
     this.setState({toggleOptions: !this.state.toggleOptions});
     this.setState({eventId: eventId});
   }
+
+  receiveEditfromOptions(obj){
+    var newList = [];
+    this.state.list.forEach(function(val, key) {
+      if (val.key !== obj.key) {  
+        newList.push(val);
+      } else {
+        newList.push(obj)
+      }
+    });
+    console.log(this.state)
+    console.log(obj)
+    this.setState({
+      list: newList,
+      toggleOptions: !this.state.toggleOptions
+    })
+  }
    
   render() {
+    var options;
+    if(this.state.toggleOptions) {
+      options= <ItineraryOptionsComponent 
+                event={this.state.list[this.state.eventId]}
+                edit={this.receiveEditfromOptions.bind(this)}/>
+    } else {
+      options = <div>nothing here</div>
+    }
     return (
       <div>
         <div className="col-md-12">
@@ -85,7 +114,7 @@ class Main extends React.Component {
         </div>
 
           <div id="itineraryOptions">
-            <ItineraryOptionsComponent />
+            {options}
           </div>
 
       </div>
