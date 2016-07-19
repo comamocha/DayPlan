@@ -24,16 +24,16 @@ class ItineraryOptionsComponent extends React.Component {
     }
   }
 
-  getEventFromItin (options) {
-    this.setState({
-      Location: options.location,
-      begin: options.begin,
-      end: options.end,
-      Date: options.date,
-      info: options.info,
-      ItID: options.itId
-    })
-  }
+  // getEventFromItin (options) {
+  //   this.setState({
+  //     Location: options.location,
+  //     begin: options.begin,
+  //     end: options.end,
+  //     Date: options.date,
+  //     info: options.info,
+  //     ItID: options.itId
+  //   })
+  // }
 
   editLocation(e){
     this.setState({location: e.target.value})  
