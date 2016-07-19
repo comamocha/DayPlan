@@ -74,18 +74,18 @@ class Main extends React.Component {
           </div> 
         </div>
 
-        <div className="col-md-12">
-          <div className="col-md-6">
-            <MapComponent id="map"/>
+        <div className="col-md-12" >
+          <div className="col-md-6" id="map">
+            <MapComponent />
           </div>
 
-          <div className="col-md-6">
-            <ItineraryListComponent id="itineraryList"/>
+          <div className="col-md-6" id="itineraryList">
+            <ItineraryListComponent />
           </div>
         </div>
 
-          <div>
-            <ItineraryOptionsComponent id="itineraryOptions"/>
+          <div id="itineraryOptions">
+            <ItineraryOptionsComponent />
           </div>
 
       </div>
