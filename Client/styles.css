@@ -26,7 +26,7 @@ button {
 
 #app {
   position: relative;
-  margin-top: 15px;
+  margin-top: 0px;
 }
 
 #main {
@@ -65,4 +65,10 @@ footer {
   text-align: center;
   left: auto;
   right: auto;
+}
+
+#loginForm {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  padding: 25px;
 }
