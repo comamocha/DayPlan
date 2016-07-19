@@ -8,18 +8,30 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    
   }
 
 
   render() {
     return (
+      
+      <div className="col-md-10 col-md-offset-1">
 
-      <div>
-        <Link to='/home'>Home</Link>&nbsp;
-        <Link to='/'>App</Link>&nbsp;
-        <Link to='/Login'>Login</Link>&nbsp;
-        {this.props.children}
+        <nav className="navbar navbar-default">
+          <ul className="nav navbar-nav">
+            <li><Link to='/home'>Home</Link></li>
+            <li><Link to='/'>App</Link></li>
+            <li><Link to='/Login'>Login</Link></li>
+          </ul>
+        </nav>
+
+        <div id="main">
+            {this.props.children}
+        </div>
+
+        <footer>
+          <p>© 2016 COMAMOCHA, Inc.</p>
+        </footer>
+
       </div>
 
 

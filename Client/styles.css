@@ -15,9 +15,8 @@ input {
 form {
   position: relative;
   text-align: center;
-  width: 80%;
-  top: 37%;
-  left: 9%;
+  width: 100%;
+  top: 0%;
 }
 
 button {
@@ -27,15 +26,49 @@ button {
 
 #app {
   position: relative;
-  height: 30%;
-  width: 40%;
-  left: 30%;
-  top: 30%;
+  margin-top: 0px;
 }
 
+#main {
+  margin-bottom: 75px;
+  overflow: auto;
+}
 .container {
   /*background-color: white;*/
   background:rgba(255,255,255,0.7);
   height: 100%;
   width: 100%;
+}
+
+footer {
+  position: relative;
+  margin-top: -50px; /* negative value of footer height */
+  height: 50px;
+  clear:both;
+  padding: 20px 20px;
+  background-color: rgb(44, 62, 80);
+  color: white;
+} 
+
+.signIn, .signUp{
+  padding: 10px;
+  margin: 10px;
+}
+
+.tableHeader {
+  background-color: rgb(44, 62, 80);
+  color: white;
+  border-radius: 100px;
+}
+
+.center-align {
+  text-align: center;
+  left: auto;
+  right: auto;
+}
+
+#loginForm {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  padding: 25px;
 }

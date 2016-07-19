@@ -37,15 +37,29 @@ class Login extends React.Component {
 
     render() {
           return (
-         <div className='container'>
-    
-            <form>
-              <input className='login' placeholder='Username' onChange={this.handleUsernameChange}/>
-              <input className='password' type="password" placeholder='Password' onChange={this.handlePasswordChange}/>
-              <div></div>
-              <button className='signIn' type='button' onClick={this.handleSubmit}>Sign In</button>
-              <button className='signUp'>Create a new account</button>
-              <div>{this.props.username}</div>
+         <div id="loginForm" className="col-md-6 col-md-offset-3">
+            <form className="form-horizontal col-md-8 col-md-offset-2">
+              <fieldset>
+                <div className="form-group">
+                  <label className="control-label">Username</label>
+                  <div>
+                    <input type="text" className="form-control" placeholder="Username" onChange={this.handleUsernameChange}/>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label className="control-label">Password</label>
+                  <div>
+                    <input type="password" className="form-control" placeholder="Password" onChange={this.handlePasswordChange}/>
+                  </div>
+                </div>
+                <button className='signIn btn btn-success' type='button' onClick={this.handleSubmit}>Sign In!</button>
+                <div className="row">
+                  <label className="control-label">Not a member?</label>
+                </div>
+                <div className="row">
+                  <button className='signUp btn btn-danger'>Sign Up!</button>
+                </div>
+              </fieldset>
             </form>
          </div>
       );
