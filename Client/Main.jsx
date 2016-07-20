@@ -47,8 +47,8 @@ class Main extends React.Component {
 
   deleteEvent(eventId) {
     var list = [];
+    var i = 0;
     this.state.list.forEach(function(val, key) {
-      var i = 0;
       if (val['key'] !== eventId) {
         i++;
         val.key = i 
@@ -72,8 +72,6 @@ class Main extends React.Component {
         newList.push(obj)
       }
     });
-    console.log(this.state)
-    console.log(obj)
     this.setState({
       list: newList,
       toggleOptions: !this.state.toggleOptions
