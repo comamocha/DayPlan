@@ -8,7 +8,8 @@ class ItineraryListComponent extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="mainComponent">
+        <h3 className="text-center">Your Itineraries</h3>
                   *LIST OF ITINERARIES COMPONENT*
             List of all of our itineraries we have created.
             example: array of objects  display: is date and title

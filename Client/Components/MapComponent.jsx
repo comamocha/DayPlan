@@ -9,8 +9,11 @@ class MapComponent extends React.Component {
 
   render() {
     return (
-      <div className="actualMap">
-        <Map google={this.props.google} />
+      <div className="mainComponent">
+        <div className="actualMap">
+          <h3 className="text-center">Visualize Your Day</h3>
+          <Map google={this.props.google} />
+        </div>
       </div>
     );
   }
