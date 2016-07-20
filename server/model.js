@@ -67,6 +67,7 @@ module.exports = {
     yelp: {
       //Variables 
       variables: {
+        
         latitude: '37.786942',
         longitude: '-122.399643',
         client_id: 'VUXzKET78wCT7c3pNJUnBw',
@@ -134,12 +135,7 @@ module.exports = {
         var options = {
           method: 'GET',
           url: 'https://api.yelp.com/v3/businesses/search',
-          qs:
-          {
-            term: term,
-            latitude: this.variables.latitude,
-            longitude: this.variables.longitude
-          },
+          qs: term,
           headers:
           {
             'postman-token': 'd0a9f9b7-5001-76c0-c6db-afd3e8201d99',

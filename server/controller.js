@@ -55,7 +55,8 @@ module.exports = {
     },
     BusinessYelp: function (req, res) {
       console.log("Trying to work on a  BusinessYelp call.");
-      var query = req.query.search; //Parses the url BusinessYelp?search=?13028373
+      
+      var query = req.query; //Parses the url BusinessYelp?search=?13028373
       model.api.yelp.BusinessYelp(query, req, res);
     },
     PhoneSearchYelp: function (req, res) {
