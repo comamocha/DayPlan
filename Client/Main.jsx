@@ -1,9 +1,11 @@
 import React from 'react';
 import YelpComponent from './Components/YelpComponent.jsx';
 import ItineraryComponent from './Components/ItineraryComponent.jsx';
-import MapComponent from './Components/MapComponent.jsx'
-import ItineraryListComponent from './Components/ItineraryListComponent.jsx'
-import ItineraryOptionsComponent from './Components/ItineraryOptionsComponent.jsx'
+import MapComponent from './Components/MapComponent.jsx';
+import ItineraryListComponent from './Components/ItineraryListComponent.jsx';
+import ItineraryOptionsComponent from './Components/ItineraryOptionsComponent.jsx';
+import ToggleDisplay from 'react-toggle-display';
+
 
 
 class Main extends React.Component {
@@ -50,46 +52,75 @@ class Main extends React.Component {
     var i = 0;
     this.state.list.forEach(function(val, key) {
       if (val['key'] !== eventId) {
-        i++;
         val.key = i 
+        i++;
         list.push(val);
       }
     });
     this.setState({list: list})
   }
 
+  deleteEventOnOptions(eventId) {
+    var list = [];
+    var i = 0;
+    this.state.list.forEach(function(val, key) {
+      if (val['key'] !== eventId) {
+        val.key = i; 
+        i++;
+        list.push(val);
+      }
+    });
+    this.setState(
+      {list: list,
+       toggleOptions: !this.state.toggleOptions
+      }
+    )
+  }
+
   editEvent(eventId) {
-    this.setState({toggleOptions: !this.state.toggleOptions});
-    this.setState({eventId: eventId});
+    this.setState({
+      eventId: eventId,
+      toggleOptions: !this.state.toggleOptions
+    });
   }
 
   receiveEditfromOptions(obj){
+    //rebuild itinerary; newList will contain new itinerary with edits
     var newList = [];
     this.state.list.forEach(function(val, key) {
+    //iterate over original itinerary and add all non-edited events back as they were
       if (val.key !== obj.key) {  
         newList.push(val);
       } else {
+        //this adds edited event to our rebuilt itinerary 
         newList.push(obj)
       }
     });
+    //set the state with the new updated itinerary and toggledisplay to hide Itoptions component and show main components
     this.setState({
       list: newList,
       toggleOptions: !this.state.toggleOptions
     })
+    console.log(this.state)
   }
    
   render() {
+    //options contains our IToptions component w/functionality
+    //if we are editing/creating an event then toggleOptions returns true
+    //this provides Itoptions component the proper event using eventId to edit
     var options;
     if(this.state.toggleOptions) {
       options= <ItineraryOptionsComponent 
                 event={this.state.list[this.state.eventId]}
+                deleteEvent={this.deleteEventOnOptions.bind(this)}
                 edit={this.receiveEditfromOptions.bind(this)}/>
-    } else {
-      options = <div>nothing here</div>
     }
     return (
       <div>
+
+        <ToggleDisplay show={!this.state.toggleOptions}>
         <div className="col-xs-12">
+
           <div id="yelp" className="col-xs-12 col-md-6">
             <YelpComponent/>
           </div>
@@ -99,9 +130,11 @@ class Main extends React.Component {
               deleteEvent={this.deleteEvent.bind(this)} 
               editEvent={this.editEvent.bind(this)}/>
           </div> 
+
         </div>
 
         <div className="col-xs-12">
+
           <div className="col-xs-12 col-md-6" id="map">
             <MapComponent />
           </div>
@@ -109,11 +142,16 @@ class Main extends React.Component {
           <div className="col-xs-12 col-md-6" id="itineraryList">
             <ItineraryListComponent />
           </div>
-        </div>
 
-          <div id="itineraryOptions">
+        </div>
+        </ToggleDisplay>
+
+        <ToggleDisplay show={this.state.toggleOptions}>
+          <div id="itineraryOptions" >
             {options}
           </div>
+
+        </ToggleDisplay>
 
       </div>
     );
