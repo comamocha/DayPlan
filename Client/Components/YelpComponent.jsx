@@ -120,9 +120,9 @@ class YelpComponent extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className="mainComponent">
 
-        <div className="text-center" className="col-xs-12 col-xs-offset-1">
+        <div className="text-center" className="col-xs-12">
          
           <form>
             <div className="location">

@@ -14,13 +14,16 @@ class App extends React.Component {
   render() {
     return (
       
-      <div className="col-xs-10 col-xs-offset-1">
+      <div className="col-xs-12">
 
         <nav id="nav" className="navbar navbar-default">
           <ul className="nav navbar-nav">
             <li><Link to='/home'>Home</Link></li>
             <li><Link to='/'>App</Link></li>
             <li><Link to='/Login'>Login</Link></li>
+          </ul>
+          <ul className="nav navbar-nav navbar-right">
+            <li id="brandFont"><Link to='/home'>DayPlanner.io</Link></li>
           </ul>
         </nav>
 

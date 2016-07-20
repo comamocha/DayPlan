@@ -45,7 +45,7 @@ class ItineraryComponent extends React.Component {
 
     return (
       <div className="mainComponent">
-        <h3 className="text-center">Your Itinerary</h3>
+        <h3 className="text-center">Edit Your Plans</h3>
 
         <table className="table table-striped table-hover">
           <thead className="tableHeader">

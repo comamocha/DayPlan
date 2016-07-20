@@ -90,11 +90,11 @@ class Main extends React.Component {
     return (
       <div>
         <div className="col-xs-12">
-          <div id="yelp" className="col-xs-6">
+          <div id="yelp" className="col-xs-12 col-md-6">
             <YelpComponent/>
           </div>
 
-          <div id="itinerary" className="col-xs-6">
+          <div id="itinerary" className="col-xs-12 col-md-6">
             <ItineraryComponent list={this.state.list} 
               deleteEvent={this.deleteEvent.bind(this)} 
               editEvent={this.editEvent.bind(this)}/>
@@ -102,11 +102,11 @@ class Main extends React.Component {
         </div>
 
         <div className="col-xs-12">
-          <div className="col-xs-6" id="map">
+          <div className="col-xs-12 col-md-6" id="map">
             <MapComponent />
           </div>
 
-          <div className="col-xs-6" id="itineraryList">
+          <div className="col-xs-12 col-md-6" id="itineraryList">
             <ItineraryListComponent />
           </div>
         </div>
