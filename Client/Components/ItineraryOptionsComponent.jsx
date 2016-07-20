@@ -57,7 +57,7 @@ class ItineraryOptionsComponent extends React.Component {
   }
 
   render() {
-    //assign obj the value of this.state to be used for onClick on submit button
+
     //this allows us to pass the edited event back to our main.jsx state which is then reflected on our itinerary component
     var obj = this.state;
     return (
