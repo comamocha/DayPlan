@@ -5,7 +5,7 @@
   "main": "app",
   "scripts": {
     "test": "test",
-    "start": "webpack-dev-server --hot",
+    "start": "webpack-dev-server --host 0.0.0.0 --hot",
     "build": "webpack --progress --colors",
     "copy": " cp ./Client/index.html /var/www/html | cp ./Client/index.js /var/www/html | cp ./Client/styles.css /var/www/html "
   },
@@ -28,5 +28,15 @@
     "request": "^2.73.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melatonin355/whatToDo.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/melatonin355/whatToDo/issues"
+  },
+  "homepage": "https://github.com/melatonin355/whatToDo#readme"
 }
