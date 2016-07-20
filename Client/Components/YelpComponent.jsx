@@ -121,7 +121,7 @@ class YelpComponent extends React.Component {
 
     return (
       <div className="mainComponent">
-
+        <h3 className="text-center">Plan Your Day</h3>
         <div className="text-center" className="col-xs-12">
          
           <form>
