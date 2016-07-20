@@ -26,19 +26,38 @@ class ItineraryComponent extends React.Component {
     super(props)
   }
 
+  createXmlHttpRequestObject() {
+    var xmlHttp;
+
+    if(window.XMLHttpRequest) {
+      //This works for nearly everything but Internet Explorer
+      xmlHttp = new XMLHttpRequest();
+    } else {
+      //This works for Internet Explorer
+      xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    return xmlHttp;
+  }
+
   saveItinerary() {
-    $.ajax({
-      url: '/list',
-      dataType: 'json',
-      type: 'POST',
-      data: this.props.list,
-      success: function(data) {
-        alert('Itinerary saved!');
-      },
-      error: function(xhr, status, err) {
-        console.error('/list', status, err.toString());
-      }
-    });
+    var xhr = this.createXmlHttpRequestObject();
+    xhr.withCredentials = false;
+    xhr.open("POST", "http://127.0.0.1:3000/list");
+    xhr.send(JSON.stringify(this.props.list));
+
+    // $.ajax({
+    //   url: '/list',
+    //   dataType: 'json',
+    //   type: 'POST',
+    //   data: this.props.list,
+    //   success: function(data) {
+    //     console.log('Itinerary saved!');
+    //   },
+    //   error: function(xhr, status, err) {
+    //     console.error('/list', status, err.toString());
+    //   }
+    // });
   }
 
   render() {

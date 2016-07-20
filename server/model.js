@@ -51,8 +51,8 @@ module.exports = {
   },
 
   list: {
-    get: function() {
-
+    post: function() {
+      console.log('inside list.post model');
     }
   },
 
