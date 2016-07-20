@@ -4,7 +4,7 @@
 #Why Docker? https://www.quora.com/Why-is-Docker-so-hot-right-now
 #Steps followed:
 #http://jdlm.info/articles/2016/03/06/lessons-building-node-app-docker.html
-
+#TO RUN: 1) Install Docker 2) "In terminal run" docker-compose build 3)"then" docker-compose up
 
 
 FROM node:4.3.2
