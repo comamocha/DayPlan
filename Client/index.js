@@ -62,7 +62,7 @@
 
 	var _Main2 = _interopRequireDefault(_Main);
 
-	var _Login = __webpack_require__(255);
+	var _Login = __webpack_require__(256);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
@@ -21167,7 +21167,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'col-xs-10 col-xs-offset-1' },
+	        { className: 'col-xs-12' },
 	        _react2.default.createElement(
 	          'nav',
 	          { id: 'nav', className: 'navbar navbar-default' },
@@ -21199,6 +21199,19 @@
 	                _reactRouter.Link,
 	                { to: '/Login' },
 	                'Login'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'nav navbar-nav navbar-right' },
+	            _react2.default.createElement(
+	              'li',
+	              { id: 'brandFont' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/home' },
+	                'DayPlanner.io'
 	              )
 	            )
 	          )
@@ -26879,6 +26892,10 @@
 
 	var _ItineraryOptionsComponent2 = _interopRequireDefault(_ItineraryOptionsComponent);
 
+	var _reactToggleDisplay = __webpack_require__(255);
+
+	var _reactToggleDisplay2 = _interopRequireDefault(_reactToggleDisplay);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26939,87 +26956,116 @@
 	      var i = 0;
 	      this.state.list.forEach(function (val, key) {
 	        if (val['key'] !== eventId) {
-	          i++;
 	          val.key = i;
+	          i++;
 	          list.push(val);
 	        }
 	      });
 	      this.setState({ list: list });
 	    }
 	  }, {
-	    key: 'editEvent',
-	    value: function editEvent(eventId) {
-	      this.setState({ toggleOptions: !this.state.toggleOptions });
-	      this.setState({ eventId: eventId });
-	    }
-	  }, {
-	    key: 'receiveEditfromOptions',
-	    value: function receiveEditfromOptions(obj) {
-	      var newList = [];
+	    key: 'deleteEventOnOptions',
+	    value: function deleteEventOnOptions(eventId) {
+	      var list = [];
+	      var i = 0;
 	      this.state.list.forEach(function (val, key) {
-	        if (val.key !== obj.key) {
-	          newList.push(val);
-	        } else {
-	          newList.push(obj);
+	        if (val['key'] !== eventId) {
+	          val.key = i;
+	          i++;
+	          list.push(val);
 	        }
 	      });
-	      this.setState({
-	        list: newList,
+	      this.setState({ list: list,
 	        toggleOptions: !this.state.toggleOptions
 	      });
 	    }
 	  }, {
+	    key: 'editEvent',
+	    value: function editEvent(eventId) {
+	      this.setState({
+	        eventId: eventId,
+	        toggleOptions: !this.state.toggleOptions
+	      });
+	    }
+	  }, {
+	    key: 'receiveEditfromOptions',
+	    value: function receiveEditfromOptions(obj) {
+	      //rebuild itinerary; newList will contain new itinerary with edits
+	      var newList = [];
+	      this.state.list.forEach(function (val, key) {
+	        //iterate over original itinerary and add all non-edited events back as they were
+	        if (val.key !== obj.key) {
+	          newList.push(val);
+	        } else {
+	          //this adds edited event to our rebuilt itinerary 
+	          newList.push(obj);
+	        }
+	      });
+	      //set the state with the new updated itinerary and toggledisplay to hide Itoptions component and show main components
+	      this.setState({
+	        list: newList,
+	        toggleOptions: !this.state.toggleOptions
+	      });
+	      console.log(this.state);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      //options contains our IToptions component w/functionality
+	      //if we are editing/creating an event then toggleOptions returns true
+	      //this provides Itoptions component the proper event using eventId to edit
 	      var options;
 	      if (this.state.toggleOptions) {
 	        options = _react2.default.createElement(_ItineraryOptionsComponent2.default, {
 	          event: this.state.list[this.state.eventId],
+	          deleteEvent: this.deleteEventOnOptions.bind(this),
 	          edit: this.receiveEditfromOptions.bind(this) });
-	      } else {
-	        options = _react2.default.createElement(
-	          'div',
-	          null,
-	          'nothing here'
-	        );
 	      }
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-xs-12' },
+	          _reactToggleDisplay2.default,
+	          { show: !this.state.toggleOptions },
 	          _react2.default.createElement(
 	            'div',
-	            { id: 'yelp', className: 'col-xs-6' },
-	            _react2.default.createElement(_YelpComponent2.default, null)
+	            { className: 'col-xs-12' },
+	            _react2.default.createElement(
+	              'div',
+	              { id: 'yelp', className: 'col-xs-12 col-md-6' },
+	              _react2.default.createElement(_YelpComponent2.default, null)
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { id: 'itinerary', className: 'col-xs-12 col-md-6' },
+	              _react2.default.createElement(_ItineraryComponent2.default, { list: this.state.list,
+	                deleteEvent: this.deleteEvent.bind(this),
+	                editEvent: this.editEvent.bind(this) })
+	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { id: 'itinerary', className: 'col-xs-6' },
-	            _react2.default.createElement(_ItineraryComponent2.default, { list: this.state.list,
-	              deleteEvent: this.deleteEvent.bind(this),
-	              editEvent: this.editEvent.bind(this) })
+	            { className: 'col-xs-12' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-12 col-md-6', id: 'map' },
+	              _react2.default.createElement(_MapComponent2.default, null)
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-12 col-md-6', id: 'itineraryList' },
+	              _react2.default.createElement(_ItineraryListComponent2.default, null)
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-xs-12' },
+	          _reactToggleDisplay2.default,
+	          { show: this.state.toggleOptions },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-6', id: 'map' },
-	            _react2.default.createElement(_MapComponent2.default, null)
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-6', id: 'itineraryList' },
-	            _react2.default.createElement(_ItineraryListComponent2.default, null)
+	            { id: 'itineraryOptions' },
+	            options
 	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { id: 'itineraryOptions' },
-	          options
 	        )
 	      );
 	    }
@@ -27048,11 +27094,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//Yelp Component renders yelp search form and results
 
 	var YelpComponent = function (_React$Component) {
 	  _inherits(YelpComponent, _React$Component);
@@ -27060,20 +27110,66 @@
 	  function YelpComponent(props) {
 	    _classCallCheck(this, YelpComponent);
 
+	    //state location= city you are searchin in
+	    //state results = results that returned from Yelp API (Made by us)
+
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(YelpComponent).call(this, props));
 
-	    _this.state = { location: 'San Francisco', results: 'Searching..' };
+	    _this.state = { location: 'San Francisco', results: '', solutionObjects: '', currentOverlay: '' };
+	    //this.yelpReview.bind(this);
 
 	    return _this;
 	  }
 
+	  //Renders review for business 
+	  //ReviewsYelp -> 3 pics, 3 reviews, 
+	  // /ReviewsYelp?search=hunan-homes-restaurant-san-francisco
+
+
 	  _createClass(YelpComponent, [{
-	    key: 'handleTermChange',
-	    value: function handleTermChange(term) {
-	      console.log(term);
+	    key: 'yelpReview',
+	    value: function yelpReview(businessesId) {
+	      self = this;
+	      //console.log(businessesId);
+
+	      var data = null;
+
+	      var xhr = new XMLHttpRequest();
+	      xhr.withCredentials = false;
+
+	      xhr.addEventListener("readystatechange", function () {
+	        if (this.readyState === 4) {
+	          console.log(this.responseText);
+	          var businessesArray = JSON.parse(this.responseText).reviews;
+	          console.log(businessesArray);
+	          self.setState({
+	            currentOverlay: _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                businessesId,
+	                ' '
+	              ),
+	              businessesArray[0].user.name,
+	              ' says ',
+	              businessesArray[0].text,
+	              'about'
+	            )
+	          });
+	        }
+	      });
+
+	      xhr.open('GET', 'http://localhost:3000/ReviewsYelp?search=' + businessesId);
+	      xhr.send(data);
+	      //console.log("clicked that guy",businessesId );
 	    }
 	  }, {
 	    key: 'onInputChange',
+
+
+	    //Searches Yelp API and sets response in State
 	    value: function onInputChange(term) {
 	      self = this;
 	      console.log(term);
@@ -27087,11 +27183,81 @@
 	        if (this.readyState === 4) {
 	          console.log(this.responseText);
 
-	          self.setState({ results: this.responseText });
+	          //Todo: handle response codes from server
+	          //304 = Not Modified (cached version), 200 =	OK, 404 = Not Found 
+	          if (JSON.parse(this.responseText).total > 0) {
+	            var businessesArray = JSON.parse(this.responseText).businesses;
+
+	            //Iterates through the business Array results.
+	            //Sample returned Object:
+	            //{"rating": 4.0, "image_url": "..", "name": "..", "phone": "", "url": "..", 
+	            //"review_count": 2, "coordinates": {"latitude": 33, "longitude": 22}, "id": "..", 
+	            //"categories": [{"alias": "theater", "title": "Performing Arts"}], "location": {"city": 
+	            //"Daly City", "country": "US", "address2": "", "address3": "", "state": "CA", "address1": 
+	            //"", "zip_code": "94016"}}
+
+	            var solution = [];
+	            var solutionObjects = [];
+
+	            for (var i = 0; i < businessesArray.length & i < 3; i++) {
+	              solutionObjects.push(businessesArray[i]);
+	              solution.push(_react2.default.createElement(
+	                'tr',
+	                { placeholder: businessesArray[i].id, onClick: self.yelpReview.bind(self, businessesArray[i].id) },
+	                _react2.default.createElement(
+	                  'td',
+	                  null,
+	                  ' ',
+	                  businessesArray[i].name,
+	                  '  '
+	                ),
+	                _react2.default.createElement(
+	                  'td',
+	                  null,
+	                  ' ',
+	                  businessesArray[i].location.city,
+	                  ' , ',
+	                  businessesArray[i].location.state,
+	                  ' '
+	                ),
+	                _react2.default.createElement(
+	                  'td',
+	                  null,
+	                  ' ',
+	                  businessesArray[i].location.address1,
+	                  ' '
+	                ),
+	                _react2.default.createElement(
+	                  'td',
+	                  null,
+	                  ' ',
+	                  businessesArray[i].rating,
+	                  ' '
+	                )
+	              ));
+	            }
+
+	            self.setState({
+	              results: _react2.default.createElement(
+	                'tbody',
+	                null,
+	                ' ',
+	                solution,
+	                ' '
+	              )
+
+	            });
+	          } else {
+	            self.setState({ results: _react2.default.createElement(
+	                'div',
+	                null,
+	                ' No results '
+	              ) });
+	          }
 	        }
 	      });
 
-	      xhr.open('GET', 'http://localhost:3000/AutocompleteYelp?search=' + term);
+	      xhr.open('GET', 'http://localhost:3000/BusinessYelp?term=' + term + '&location=' + this.state.location);
 	      xhr.send(data);
 	    }
 	  }, {
@@ -27102,22 +27268,21 @@
 	      this.setState({ location: term });
 	    }
 	  }, {
-	    key: 'handleSearch',
-	    value: function handleSearch(term) {
-	      console.log("Searching");
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
 
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        '*YELP* this is the yelp component; talks with yelp API to handle searches i.e.https://github.com/olalonde/node-yelp for yelp search examples location and type (term) build out component to contain time and detail field; should be able to relay information over to our itinerary',
+	        { className: 'mainComponent' },
+	        _react2.default.createElement(
+	          'h3',
+	          { className: 'text-center' },
+	          'Plan Your Day'
+	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container' },
+	          _defineProperty({ className: 'text-center' }, 'className', 'col-xs-12'),
 	          _react2.default.createElement(
 	            'form',
 	            null,
@@ -27126,23 +27291,50 @@
 	              { className: 'location' },
 	              _react2.default.createElement('input', { placeholder: 'San Francisco', onChange: function onChange(event) {
 	                  return _this2.onLocationChange(event.target.value);
-	                } }),
-	              this.state.location
+	                } })
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'search' },
-	              _react2.default.createElement('input', { onChange: function onChange(event) {
+	              _react2.default.createElement('input', { placeholder: 'Golden Gate Bridge', onChange: function onChange(event) {
 	                  return _this2.onInputChange(event.target.value);
-	                } }),
-	              this.state.results
+	                } })
 	            ),
 	            _react2.default.createElement(
-	              'button',
-	              { className: 'searchButton', type: 'button', onClick: this.handleSearch },
-	              'Search'
+	              'table',
+	              { className: 'table table-striped table-hover' },
+	              _react2.default.createElement(
+	                'thead',
+	                { className: 'tableHeader' },
+	                _react2.default.createElement(
+	                  'tr',
+	                  { className: 'tableHeader' },
+	                  _react2.default.createElement(
+	                    'th',
+	                    null,
+	                    'Name '
+	                  ),
+	                  _react2.default.createElement(
+	                    'th',
+	                    null,
+	                    'Location'
+	                  ),
+	                  _react2.default.createElement(
+	                    'th',
+	                    null,
+	                    'Address'
+	                  ),
+	                  _react2.default.createElement(
+	                    'th',
+	                    null,
+	                    'Rating'
+	                  )
+	                )
+	              ),
+	              this.state.results
 	            )
-	          )
+	          ),
+	          this.state.currentOverlay
 	        )
 	      );
 	    }
@@ -27279,7 +27471,7 @@
 	        _react2.default.createElement(
 	          'h3',
 	          { className: 'text-center' },
-	          'Your Itinerary'
+	          'Edit Your Plans'
 	        ),
 	        _react2.default.createElement(
 	          'table',
@@ -27421,8 +27613,17 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'actualMap' },
-	        _react2.default.createElement(_googleMapsReact2.default, { google: this.props.google })
+	        { className: 'mainComponent' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'actualMap' },
+	          _react2.default.createElement(
+	            'h3',
+	            { className: 'text-center' },
+	            'Visualize Your Day'
+	          ),
+	          _react2.default.createElement(_googleMapsReact2.default, { google: this.props.google })
+	        )
 	      );
 	    }
 	  }]);
@@ -28867,7 +29068,7 @@
 /* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -28897,12 +29098,17 @@
 	  }
 
 	  _createClass(ItineraryListComponent, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        '*LIST OF ITINERARIES COMPONENT* List of all of our itineraries we have created. example: array of objects  display: is date and title'
+	        "div",
+	        { className: "mainComponent" },
+	        _react2.default.createElement(
+	          "h3",
+	          { className: "text-center" },
+	          "Your Itineraries"
+	        ),
+	        "*LIST OF ITINERARIES COMPONENT* List of all of our itineraries we have created. example: array of objects  display: is date and title"
 	      );
 	    }
 	  }]);
@@ -28968,6 +29174,9 @@
 	  //   })
 	  // }
 
+	  //following edit functions take inputted values and stores them to the state
+
+
 	  _createClass(ItineraryOptionsComponent, [{
 	    key: "editLocation",
 	    value: function editLocation(e) {
@@ -28996,30 +29205,64 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
+
+	      //this allows us to pass the edited event back to our main.jsx state which is then reflected on our itinerary component
 	      var obj = this.state;
 	      return _react2.default.createElement(
 	        "div",
 	        null,
 	        _react2.default.createElement(
 	          "form",
-	          null,
+	          { className: "optionsForm" },
 	          _react2.default.createElement(
 	            "div",
 	            null,
 	            _react2.default.createElement(
 	              "label",
-	              null,
-	              "Location"
+	              { className: "optionsLabel" },
+	              "Name  "
 	            ),
-	            _react2.default.createElement("input", { placeholder: "Location", type: "text", defaultValue: this.state.location, onChange: this.editLocation.bind(this) })
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              _react2.default.createElement("input", { className: "optionsInput1", placeholder: "name", defaultValue: this.state.name, onChange: this.editName.bind(this) })
+	            )
 	          ),
 	          _react2.default.createElement(
 	            "div",
 	            null,
 	            _react2.default.createElement(
 	              "label",
+	              { className: "optionsLabel" },
+	              "Location "
+	            ),
+	            _react2.default.createElement(
+	              "p",
 	              null,
-	              "Begin : "
+	              _react2.default.createElement("input", { className: "optionsInput2", placeholder: "Location", type: "text", defaultValue: this.state.location, onChange: this.editLocation.bind(this) })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            null,
+	            _react2.default.createElement(
+	              "label",
+	              { className: "optionsLabel" },
+	              "Description "
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              _react2.default.createElement("input", { className: "optionsInput", placeholder: "Description", defaultValue: this.state.description, onChange: this.editDescription.bind(this) })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            null,
+	            _react2.default.createElement(
+	              "label",
+	              { className: "optionsLabel" },
+	              "Begin  "
 	            ),
 	            _react2.default.createElement(
 	              "select",
@@ -29038,8 +29281,8 @@
 	            null,
 	            _react2.default.createElement(
 	              "label",
-	              null,
-	              "End : "
+	              { className: "optionsLabel" },
+	              "End  "
 	            ),
 	            _react2.default.createElement(
 	              "select",
@@ -29054,33 +29297,13 @@
 	            )
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            null,
-	            _react2.default.createElement(
-	              "label",
-	              null,
-	              "Name :"
-	            ),
-	            _react2.default.createElement("input", { placeholder: "name", defaultValue: this.state.name, onChange: this.editName.bind(this) })
-	          ),
-	          _react2.default.createElement(
-	            "div",
-	            null,
-	            _react2.default.createElement(
-	              "label",
-	              null,
-	              "Description"
-	            ),
-	            _react2.default.createElement("input", { placeholder: "Description", defaultValue: this.state.description, onChange: this.editDescription.bind(this) })
-	          ),
-	          _react2.default.createElement(
 	            "button",
-	            { type: "button", onClick: this.props.edit.bind(this, obj) },
+	            { className: "optionsButton btn btn-success btn-small", type: "button", onClick: this.props.edit.bind(this, obj) },
 	            "Submit"
 	          ),
 	          _react2.default.createElement(
 	            "button",
-	            { type: "button" },
+	            { className: "optionsButton btn btn-danger btn-small", type: "button", onClick: this.props.deleteEvent.bind(this, obj.key) },
 	            "Delete"
 	          )
 	        )
@@ -29095,6 +29318,73 @@
 
 /***/ },
 /* 255 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
+	(function (root, factory) {
+		// Building component according to modularization strategy
+
+		if (true) {
+			// AMD. Register as an anonymous module.
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
+			// Node. Note that this does not work with strict
+			// CommonJS, but only CommonJS-like environments
+			// that support module.exports
+			module.exports = factory(require('react'));
+		} else {
+			// Browser globals (root is window)
+			root.ToggleDisplay = factory(React);
+		}
+	})(undefined, function (React) {
+		"use strict";
+
+		function isDefined(val) {
+			return val != null;
+		}
+
+		function shouldHide(props) {
+			var shouldHide = undefined;
+			if (isDefined(props.show)) {
+				shouldHide = !props.show;
+			} else if (isDefined(props.hide)) {
+				shouldHide = props.hide;
+			} else {
+				shouldHide = false;
+			}
+			return shouldHide;
+		}
+
+		function ToggleDisplay(props) {
+			if (props.if === false) {
+				return React.createElement('noscript', null);
+				// return null // this used to work, now have to manually return <noscript>
+			}
+
+			var style = {};
+			if (shouldHide(props)) {
+				style.display = 'none';
+			}
+			return React.createElement('span', _extends({ style: style }, props));
+		}
+
+		ToggleDisplay.propTypes = {
+			hide: React.PropTypes.bool,
+			show: React.PropTypes.bool,
+			if: React.PropTypes.bool
+		};
+
+		return ToggleDisplay;
+	});
+
+
+/***/ },
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29177,7 +29467,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { id: 'loginForm', className: 'col-xs-6 col-xs-offset-3' },
+	          { id: 'loginForm', className: 'col-xs-10 col-xs-offset-1 col-sm-8  col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4' },
 	          _react2.default.createElement(
 	            'form',
 	            { className: 'form-horizontal col-xs-8 col-xs-offset-2' },

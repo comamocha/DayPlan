@@ -1,3 +1,33 @@
+      // {
+      //   key: 0,
+      //   begin: '7:00 P.M',
+      //   end: '8:00 P.M',
+      //   //possibly add date slot 
+      //   location: '375 Bush St, San Francisco, CA 94104',
+      //   name: 'Pagan Idol',
+      //   description: 'A couple friends and I are going to get wasted.'
+      // }, {
+      //   key: 1,
+      //   begin: '8:00 P.M',
+      //   end: '12:00 P.M',
+      //   location: '375 Bush St, San Francisco, CA 94104',
+      //   name: 'Pagan Idol',
+      //   description: 'Continued drinking.'
+      // }, {
+      //   key: 2,
+      //   begin: '12:00 P.M',
+      //   end: '1:00 P.M',
+      //   location: '375 Bush St, San Francisco, CA 94104',
+      //   name: 'Pagan Idol',
+      //   description: 'Continued drinking.'
+      // }, {
+      //   key: 3,
+      //   begin: '11:00 A.M',
+      //   end: '12:00 P.M',
+      //   location: '375 Bush St, San Francisco, CA 94104',
+      //   name: 'Pagan Idol',
+      //   description: 'Continued drinking.'
+      // }
 import React from 'react';
 import YelpComponent from './Components/YelpComponent.jsx';
 import ItineraryComponent from './Components/ItineraryComponent.jsx';
@@ -12,40 +42,42 @@ class Main extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      list: [{
-        key: 0,
-        begin: '7:00 P.M',
-        end: '8:00 P.M',
-        //possibly add date slot 
-        location: '375 Bush St, San Francisco, CA 94104',
-        name: 'Pagan Idol',
-        description: 'A couple friends and I are going to get wasted.'
-      }, {
-        key: 1,
-        begin: '8:00 P.M',
-        end: '12:00 P.M',
-        location: '375 Bush St, San Francisco, CA 94104',
-        name: 'Pagan Idol',
-        description: 'Continued drinking.'
-      }, {
-        key: 2,
-        begin: '12:00 P.M',
-        end: '1:00 P.M',
-        location: '375 Bush St, San Francisco, CA 94104',
-        name: 'Pagan Idol',
-        description: 'Continued drinking.'
-      }, {
-        key: 3,
-        begin: '11:00 A.M',
-        end: '12:00 P.M',
-        location: '375 Bush St, San Francisco, CA 94104',
-        name: 'Pagan Idol',
-        description: 'Continued drinking.'
-      }],
+      list: [],
       toggleOptions: false,
       eventId: 3
     }
   }
+
+  //build out an add event function
+  //passed down to yelp; which on click will add event to list
+    //should provide adress, name of location, and gps coordinates
+  //it will also toggleOptions to populate edit screen for event
+
+  addEvent(address, name, gps){
+    //create event obj to add to List in State
+    var obj = {
+      key: this.state.list.length,
+      begin: '',
+      end: '',
+      location: address,
+      name: name,
+      description: '',
+      gps: gps
+    }
+    //copy down original list into addToList
+    var addToList = this.state.list.slice();
+    //add new event to addToList
+    addToList.push(obj)
+    //use this.setState to add newly modified itinerary
+    //also add EventId so edit component can grab right event to edit
+    //toggleOptions switchs view to our edit screen
+    this.setState({
+      list: addToList,
+      eventId: obj.key,
+      toggleOptions: !this.state.toggleOptions
+    })
+  }
+
 
   deleteEvent(eventId) {
     var list = [];
@@ -108,6 +140,7 @@ class Main extends React.Component {
     //options contains our IToptions component w/functionality
     //if we are editing/creating an event then toggleOptions returns true
     //this provides Itoptions component the proper event using eventId to edit
+
     var options;
     if(this.state.toggleOptions) {
       options= <ItineraryOptionsComponent 
@@ -122,7 +155,7 @@ class Main extends React.Component {
         <div className="col-xs-12">
 
           <div id="yelp" className="col-xs-12 col-md-6">
-            <YelpComponent/>
+            <YelpComponent addEvent={this.addEvent.bind(this)}/>
           </div>
 
           <div id="itinerary" className="col-xs-12 col-md-6">
