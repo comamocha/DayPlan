@@ -35,6 +35,7 @@ class ItineraryOptionsComponent extends React.Component {
   //   })
   // }
 
+  //following edit functions take inputted values and stores them to the state
   editLocation(e){
     this.setState({location: e.target.value})  
   }
@@ -56,40 +57,48 @@ class ItineraryOptionsComponent extends React.Component {
   }
 
   render() {
+
+    //this allows us to pass the edited event back to our main.jsx state which is then reflected on our itinerary component
     var obj = this.state;
     return (
       <div >
-        <form >
+        <form className="optionsForm">
           <div >
-            <label>Location</label>
-            <input placeholder="Location" type="text" defaultValue={this.state.location} onChange={this.editLocation.bind(this)}/>
+            <label className="optionsLabel">Name  </label>
+            <p>
+            <input className="optionsInput1" placeholder="name" defaultValue={this.state.name} onChange={this.editName.bind(this)}/>
+            </p>
+          </div>
+          <div >
+            <label className="optionsLabel">Location </label>
+            <p>
+            <input className="optionsInput2" placeholder="Location" type="text" defaultValue={this.state.location} onChange={this.editLocation.bind(this)}/>
+            </p>
+          </div>
+          <div >
+            <label className="optionsLabel">Description </label>
+            <p>           
+            <input className="optionsInput" placeholder="Description" defaultValue={this.state.description} onChange={this.editDescription.bind(this)}/>
+            </p>
           </div>
           <div>
-            <label>Begin : </label>
-            <select defaultValue={this.state.begin} onChange={this.editBegin.bind(this)}> 
+            <label className="optionsLabel">Begin  </label>
+            <select  defaultValue={this.state.begin} onChange={this.editBegin.bind(this)}> 
               {times.map( (time) => {
                 return <option>{time}</option>
               })} 
             </select >
           </div>
           <div>
-            <label>End : </label>
-            <select defaultValue={this.state.end} onChange={this.editEnd.bind(this)}> 
+            <label className="optionsLabel">End  </label>
+            <select  defaultValue={this.state.end} onChange={this.editEnd.bind(this)}> 
               {times.map( (time) => {
                 return <option>{time}</option>
               })} 
             </select>  
           </div>
-          <div >
-            <label>Name :</label>
-            <input placeholder="name" defaultValue={this.state.name} onChange={this.editName.bind(this)}/>
-          </div>
-          <div >
-            <label >Description</label>
-            <input placeholder="Description" defaultValue={this.state.description} onChange={this.editDescription.bind(this)}/>
-          </div>
-          <button type="button" onClick={this.props.edit.bind(this, obj)}>Submit</button>
-          <button type="button" >Delete</button>
+          <button className="optionsButton btn btn-success btn-small" type="button" onClick={this.props.edit.bind(this, obj)}>Submit</button>
+          <button className="optionsButton btn btn-danger btn-small" type="button" onClick={this.props.deleteEvent.bind(this, obj.key)}>Delete</button>
         </form>
       </div>
     );
