@@ -51,13 +51,12 @@ module.exports = {
   },
 
   list: {
-    post: function() {
-      query("INSERT INTO Users (username, password) VALUES ('test', 'test')").then(function() {
-        query("SELECT * FROM Users").then(function(pass) {
-          console.log('model list.post returned', pass);
-          return pass;
-        })
-      })
+    post: function(data) {
+      var parsed = JSON.parse(data);
+      var queryStr = "INSERT INTO Itineraries (name, activities) \
+      VALUES ('" + parsed.name + "', '" + parsed.list + "')";
+
+      return query(queryStr)
     }
   },
 

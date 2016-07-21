@@ -38,9 +38,11 @@ module.exports = {
 
   list: {
     post: function(req, res) {
-      console.log('controller list.post');
-      model.list.post();
-      return 'hello';
+      model.list.post(req.body.data)
+      .then(function() {
+        model.list.get();
+        res.status(200);
+      })
     }
   },
 
