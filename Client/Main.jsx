@@ -136,10 +136,10 @@ class Main extends React.Component {
         <div className="col-xs-12">
 
           <div className="col-xs-12 col-md-6" id="map">
-            <MapComponent />
+            <MapComponent list={this.state.list}/>
           </div>
 
-          <div className="col-xs-12 col-md-6" id="itineraryList">
+          <div className="col-xs-12 col-md-5 col-md-offset-7" id="itineraryList">
             <ItineraryListComponent />
           </div>
 
