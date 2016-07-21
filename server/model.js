@@ -52,7 +52,12 @@ module.exports = {
 
   list: {
     post: function() {
-      console.log('inside list.post model');
+      query("INSERT INTO Users (username, password) VALUES ('test', 'test')").then(function() {
+        query("SELECT * FROM Users").then(function(pass) {
+          console.log('model list.post returned', pass);
+          return pass;
+        })
+      })
     }
   },
 

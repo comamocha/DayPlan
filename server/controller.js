@@ -38,8 +38,9 @@ module.exports = {
 
   list: {
     post: function(req, res) {
-      console.log('**********************inside list.post controller********************\n');
+      console.log('controller list.post');
       model.list.post();
+      return 'hello';
     }
   },
 

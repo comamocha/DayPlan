@@ -41,11 +41,44 @@ class ItineraryComponent extends React.Component {
   }
 
   saveItinerary() {
-    var xhr = this.createXmlHttpRequestObject();
-    xhr.withCredentials = false;
-    xhr.open("POST", "http://127.0.0.1:3000/list");
-    xhr.send(JSON.stringify(this.props.list));
+    return fetch('http://localhost:3000/list', {
+      method: 'POST',
+      body: JSON.stringify({
+        firstParamunique: 'yourValue',
+        secondParam: 'yourOtherValue',
+      })
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson;
+    })
+    .catch((error) => {
+      console.error('there was an error');
+    });
+  }
+    //XHR
+    // var xhr = this.createXmlHttpRequestObject();
+    // xhr.withCredentials = false;
+    // xhr.open("POST", "http://127.0.0.1:3000/list");
+    // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // xhr.send(JSON.stringify(this.props.list));
+    //XHR
+    // var data = this.props.list;
+    // console.log(JSON.stringify(this.props.list[0]));
+    // var xhr = new XMLHttpRequest();
+    // xhr.withCredentials = true;
 
+    // xhr.addEventListener("readystatechange", function () {
+    //   if (this.readyState === 4) {
+    //     console.log('this.responseText is', this.responseText);
+    //   }
+    // });
+
+    // xhr.open("POST", "http://localhost:3000/list");
+    // xhr.setRequestHeader("cache-control", "no-cache");
+    // xhr.setRequestHeader("postman-token", "a7971951-df4f-e3d1-e054-dcee5693e323");
+    //JQUERY
+    // xhr.send(data);
     // $.ajax({
     //   url: '/list',
     //   dataType: 'json',
@@ -58,7 +91,6 @@ class ItineraryComponent extends React.Component {
     //     console.error('/list', status, err.toString());
     //   }
     // });
-  }
 
   render() {
 
