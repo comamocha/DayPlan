@@ -9,7 +9,7 @@ class YelpComponent extends React.Component {
     //state results = results that returned from Yelp API (Made by us)
     this.state = { location: 'San Francisco', results: '',solutionObjects:'', currentOverlay:'' }
     //this.yelpReview.bind(this);
-    
+    this.props.addEvent.bind(this)
   }
 
 
@@ -27,9 +27,9 @@ class YelpComponent extends React.Component {
 
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
-        console.log(this.responseText);
+        //console.log(this.responseText);
         var businessesArray = JSON.parse(this.responseText).reviews;
-        console.log(businessesArray);
+        //console.log(businessesArray);
         self.setState({
           currentOverlay:
           <div>
@@ -52,7 +52,7 @@ class YelpComponent extends React.Component {
   //Searches Yelp API and sets response in State
   onInputChange(term) {
     self = this;
-    console.log(term);
+    //console.log(term);
 
     var data = null;
 
@@ -61,7 +61,7 @@ class YelpComponent extends React.Component {
 
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
-        console.log(this.responseText);
+        //console.log(this.responseText);
 
         //Todo: handle response codes from server
         //304 = Not Modified (cached version), 200 =	OK, 404 = Not Found 
@@ -78,11 +78,13 @@ class YelpComponent extends React.Component {
 
           var solution = [];
           var solutionObjects = [];
-
+// self.yelpReview.bind(self, businessesArray[i].id)
           for (var i = 0; i < businessesArray.length & i < 3; i++) {
             solutionObjects.push(businessesArray[i]);
             solution.push(
-              <tr  placeholder={businessesArray[i].id}  onClick={self.yelpReview.bind(self, businessesArray[i].id)}>
+              <tr  placeholder={businessesArray[i].id}  onClick={self.props.addEvent.bind(self, businessesArray[i].location.address1 + ", " + businessesArray[i].location.city + ", " + businessesArray[i].location.state + " " + businessesArray[i].location.zip_code,
+                businessesArray[i].name, 
+                businessesArray[i].coordinates)}>
                 <td> {businessesArray[i].name}  </td>
                 <td> {businessesArray[i].location.city} , {businessesArray[i].location.state} </td>
                 <td> {businessesArray[i].location.address1} </td>

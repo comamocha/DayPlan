@@ -1,4 +1,4 @@
-DROP DATABASE Planner;
+-- DROP DATABASE Planner;
 CREATE DATABASE Planner;
 
 USE Planner;
