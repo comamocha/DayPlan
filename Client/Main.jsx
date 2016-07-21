@@ -44,7 +44,8 @@ class Main extends React.Component {
     this.state = {
       list: [],
       toggleOptions: false,
-      eventId: 3
+      eventId: 3,
+      itineraryName: 'testItin'
     }
   }
 
@@ -159,7 +160,7 @@ class Main extends React.Component {
           </div>
 
           <div id="itinerary" className="col-xs-12 col-md-6">
-            <ItineraryComponent list={this.state.list} 
+            <ItineraryComponent list={this.state.list} name={this.state.itineraryName}
               deleteEvent={this.deleteEvent.bind(this)} 
               editEvent={this.editEvent.bind(this)}/>
           </div> 

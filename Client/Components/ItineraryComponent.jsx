@@ -26,19 +26,25 @@ class ItineraryComponent extends React.Component {
     super(props)
   }
 
+  createXmlHttpRequestObject() {
+    //xmlHttpRequest works for nearly everything but Internet Explorer
+    //ActiveXObject works for Internet Explorer
+    var xmlHttp;
+    if(window.XMLHttpRequest) {
+      xmlHttp = new XMLHttpRequest();
+    } else {
+      xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    return xmlHttp;
+  }
+
   saveItinerary() {
-    $.ajax({
-      url: '/list',
-      dataType: 'json',
-      type: 'POST',
-      data: this.props.list,
-      success: function(data) {
-        alert('Itinerary saved!');
-      },
-      error: function(xhr, status, err) {
-        console.error('/list', status, err.toString());
-      }
-    });
+    var data = "data=" + JSON.stringify({name: 'matt', list: this.props.list});
+    var xhr = this.createXmlHttpRequestObject();
+    xhr.withCredentials = false;
+    xhr.open("POST", "http://127.0.0.1:3000/list");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(data); 
   }
 
   render() {
@@ -78,23 +84,3 @@ class ItineraryComponent extends React.Component {
 };
 
 export default ItineraryComponent;
-
-        // <div className="modal">
-        //   <div className="modal-dialog">
-        //     <div className="modal-content">
-        //       <div className="modal-header">
-        //         <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        //         <h4 className="modal-title">Edit or Delete?</h4>
-        //       </div>
-        //       <div className="modal-body">
-        //         <p>Would you like to edit or delete the following event?</p>
-        //         <p>{this.eventInfo}</p>
-        //       </div>
-        //       <div className="modal-footer">
-        //         <button type="button" className="btn btn-default" data-dismiss="modal">Edit</button>
-        //         <button type="button" className="btn btn-primary">Delete</button>
-        //         <button type="button" className="btn btn-primary">Neither</button>
-        //       </div>
-        //     </div>
-        //   </div>
-        // </div>

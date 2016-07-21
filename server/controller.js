@@ -37,8 +37,12 @@ module.exports = {
   },
 
   list: {
-    get: function(req, res) {
-      model.list.get();
+    post: function(req, res) {
+      model.list.post(req.body.data)
+      .then(function() {
+        model.list.get();
+        res.status(200);
+      })
     }
   },
 

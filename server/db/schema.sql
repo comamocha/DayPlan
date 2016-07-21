@@ -16,6 +16,7 @@ CREATE TABLE Users (
 CREATE TABLE Itineraries (
   id INT AUTO_INCREMENT not null,
   name VARCHAR(50),
+  activities VARCHAR(255),
   PRIMARY KEY (id)
 );
 

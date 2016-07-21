@@ -51,8 +51,12 @@ module.exports = {
   },
 
   list: {
-    get: function() {
+    post: function(data) {
+      var parsed = JSON.parse(data);
+      var queryStr = "INSERT INTO Itineraries (name, activities) \
+      VALUES ('" + parsed.name + "', '" + parsed.list + "')";
 
+      return query(queryStr)
     }
   },
 
