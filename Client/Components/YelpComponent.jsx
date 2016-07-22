@@ -151,11 +151,7 @@ class YelpComponent extends React.Component {
 
           </form>
 
-          
           {this.state.currentOverlay}
-
-          
-           
         </div>
 
       
