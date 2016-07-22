@@ -4,7 +4,7 @@
   "description": "Itinerary planning app",
   "main": "app",
   "scripts": {
-    "test": "mocha --compilers js:babel-register --recursive",
+    "test": "mocha  --compilers js:babel-register --recursive",
     "start": "webpack-dev-server --host 0.0.0.0 --hot",
     "build": "webpack --progress --colors",
     "copy": " cp ./Client/index.html /var/www/html | cp ./Client/index.js /var/www/html | cp ./Client/styles.css /var/www/html "
