@@ -157,7 +157,7 @@ class Main extends React.Component {
         <div className="col-xs-12 col-md-5" id="map">
           <MapComponent list={this.state.list}/>
         </div>
-        <div className="col-xs-12 col-md-5 col-md-offset-1" id="itineraryList">
+        <div className="col-xs-12 col-md-6 col-md-offset-1" id="itineraryList">
           <ItineraryListComponent updateActivities={this.updateItineraryActivities.bind(this)}/>
         </div>
 
