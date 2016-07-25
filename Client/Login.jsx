@@ -33,6 +33,21 @@ class Login extends React.Component {
 
     handleSubmit(e) {
       console.log('username: ', this.state.username, '\npassword: ', this.state.password);
+      var xhr = new XMLHttpRequest();
+      var data = "data=" + JSON.stringify({username: this.state.username, password: this.state.password});
+      xhr.withCredentials = false;
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          if (!!xhr.responseText) {
+            window.location = '/home';
+          } else {
+            console.log('no redirect from sign in button');
+          }
+        }
+      };
+      xhr.open("POST", "http://127.0.0.1:3000/login");
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send(data);
     }
 
     render() {

@@ -39,7 +39,8 @@ class ItineraryComponent extends React.Component {
   }
 
   saveItinerary() {
-    var data = "data=" + JSON.stringify({name: 'matt', list: this.props.list});
+    //Use req.session.username to populate 'name' field once authentication complete
+    var data = "data=" + JSON.stringify({name: 'username', list: this.props.list});
     var xhr = this.createXmlHttpRequestObject();
     xhr.withCredentials = false;
     xhr.open("POST", "http://127.0.0.1:3000/list");

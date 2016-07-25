@@ -13,24 +13,35 @@ db.connect(function(error) {
 
 module.exports = {
   signup: {
+    permitSignup: function(data) {
+      return query('SELECT username FROM Users WHERE Users.username = ' + "'" + data.username + "'")
+        .then(function(pass) {
+          console.log('Model signup.permitSignup function returned', pass);
+          if (pass.length === 0) {
+            return true;
+          }
+          return false;
+        })
+    },
+
     post: function(data) {
-      //check database for existing username
-        //if username is available add to our database
-        //if username is unavailable send status back to controller
-      query()
+      return query("INSERT INTO Users (username, password) VALUES ('" + 
+                    data.username + "', '" + data.password + "')")
+      .then(query("SELECT * FROM Users WHERE Users.username = '" + data.username + "'")
+      .then(function(result) {
+        return result;
+      }))
     }
   },
   
   login: {
     permitLogin: function(data) {
-      console.log(data, '^^^^^^^^^^^^^^^');
-      query('SELECT password FROM Users WHERE Users.username = ' + "'" + data.user + "'")
-        .then(function(pass) {
-          console.log('Model login.permitLogin function returned', pass);
-          if (pass === data.pass) {
-            return true;
+      return query('SELECT * FROM Users WHERE Users.username = ' + "'" + data.username + "'")
+        .then(function(user) {
+          if (user.length === 0) {
+            return false;
           }
-          return false;
+          return user;
         })
     }
   },
@@ -52,9 +63,8 @@ module.exports = {
 
   list: {
     post: function(data) {
-      var parsed = JSON.parse(data);
       var queryStr = "INSERT INTO Itineraries (name, activities) \
-      VALUES ('" + parsed.name + "', '" + parsed.list + "')";
+      VALUES ('" + data.name + "', '" + data.list + "')";
 
       return query(queryStr)
     }
