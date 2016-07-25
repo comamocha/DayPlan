@@ -62,7 +62,7 @@
 
 	var _Main2 = _interopRequireDefault(_Main);
 
-	var _Login = __webpack_require__(255);
+	var _Login = __webpack_require__(256);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
@@ -26892,7 +26892,7 @@
 
 	var _ItineraryOptionsComponent2 = _interopRequireDefault(_ItineraryOptionsComponent);
 
-	var _reactToggleDisplay = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-toggle-display\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _reactToggleDisplay = __webpack_require__(255);
 
 	var _reactToggleDisplay2 = _interopRequireDefault(_reactToggleDisplay);
 
@@ -29339,6 +29339,73 @@
 
 /***/ },
 /* 255 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
+	(function (root, factory) {
+		// Building component according to modularization strategy
+
+		if (true) {
+			// AMD. Register as an anonymous module.
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
+			// Node. Note that this does not work with strict
+			// CommonJS, but only CommonJS-like environments
+			// that support module.exports
+			module.exports = factory(require('react'));
+		} else {
+			// Browser globals (root is window)
+			root.ToggleDisplay = factory(React);
+		}
+	})(undefined, function (React) {
+		"use strict";
+
+		function isDefined(val) {
+			return val != null;
+		}
+
+		function shouldHide(props) {
+			var shouldHide = undefined;
+			if (isDefined(props.show)) {
+				shouldHide = !props.show;
+			} else if (isDefined(props.hide)) {
+				shouldHide = props.hide;
+			} else {
+				shouldHide = false;
+			}
+			return shouldHide;
+		}
+
+		function ToggleDisplay(props) {
+			if (props.if === false) {
+				return React.createElement('noscript', null);
+				// return null // this used to work, now have to manually return <noscript>
+			}
+
+			var style = {};
+			if (shouldHide(props)) {
+				style.display = 'none';
+			}
+			return React.createElement('span', _extends({ style: style }, props));
+		}
+
+		ToggleDisplay.propTypes = {
+			hide: React.PropTypes.bool,
+			show: React.PropTypes.bool,
+			if: React.PropTypes.bool
+		};
+
+		return ToggleDisplay;
+	});
+
+
+/***/ },
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
