@@ -7,7 +7,6 @@ import Login from './Login.jsx';
 import { Router, Route, Link, browserHistory, IndexRoute  } from 'react-router'
 
 
-
 ReactDOM.render((
    <Router history={browserHistory}>
       <Route path = "/" component = {App}>
