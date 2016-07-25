@@ -27136,6 +27136,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var yelpLocation = 'http://198.199.95.16:3000';
+
 	//Yelp Component renders yelp search form and results
 
 	var YelpComponent = function (_React$Component) {
@@ -27195,7 +27197,7 @@
 	        }
 	      });
 
-	      xhr.open('GET', 'http://localhost:3000/ReviewsYelp?search=' + businessesId);
+	      xhr.open('GET', yelpLocation + '/ReviewsYelp?search=' + businessesId);
 	      xhr.send(data);
 	      //console.log("clicked that guy",businessesId );
 	    }
@@ -27291,7 +27293,7 @@
 	        }
 	      });
 
-	      xhr.open('GET', 'http://localhost:3000/BusinessYelp?term=' + term + '&location=' + this.state.location);
+	      xhr.open('GET', yelpLocation + '/BusinessYelp?term=' + term + '&location=' + this.state.location);
 	      xhr.send(data);
 	    }
 	  }, {
