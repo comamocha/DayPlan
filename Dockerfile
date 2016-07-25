@@ -18,10 +18,10 @@ ENV HOME=/home/app
 
 #copy package.json and npm-shrinkwrap
 COPY package.json npm-shrinkwrap.json $HOME/what-to-do-docker/
-RUN chown -R app:app $HOME/*
+#RUN chown -R app:app $HOME/*
 
 #Use user "app" instead of root and run npm install
-USER app
+#USER app
 WORKDIR $HOME/what-to-do-docker
 
 #Copy current working files to docker container
