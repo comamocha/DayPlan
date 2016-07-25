@@ -13,7 +13,7 @@ module.exports = {
   
   login: {
     get: function(req, res) {
-      res.redirect('../Client/login.html'); /* REDIRECT if static page; RENDER if new view */
+      // res.redirect('../Client/login.html'); /* REDIRECT if static page; RENDER if new view */
     },
     post: function(req, res) {
       res.statusCode = 200;

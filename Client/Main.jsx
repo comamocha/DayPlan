@@ -1,33 +1,4 @@
-      // {
-      //   key: 0,
-      //   begin: '7:00 P.M',
-      //   end: '8:00 P.M',
-      //   //possibly add date slot 
-      //   location: '375 Bush St, San Francisco, CA 94104',
-      //   name: 'Pagan Idol',
-      //   description: 'A couple friends and I are going to get wasted.'
-      // }, {
-      //   key: 1,
-      //   begin: '8:00 P.M',
-      //   end: '12:00 P.M',
-      //   location: '375 Bush St, San Francisco, CA 94104',
-      //   name: 'Pagan Idol',
-      //   description: 'Continued drinking.'
-      // }, {
-      //   key: 2,
-      //   begin: '12:00 P.M',
-      //   end: '1:00 P.M',
-      //   location: '375 Bush St, San Francisco, CA 94104',
-      //   name: 'Pagan Idol',
-      //   description: 'Continued drinking.'
-      // }, {
-      //   key: 3,
-      //   begin: '11:00 A.M',
-      //   end: '12:00 P.M',
-      //   location: '375 Bush St, San Francisco, CA 94104',
-      //   name: 'Pagan Idol',
-      //   description: 'Continued drinking.'
-      // }
+
 import React from 'react';
 import YelpComponent from './Components/YelpComponent.jsx';
 import ItineraryComponent from './Components/ItineraryComponent.jsx';
