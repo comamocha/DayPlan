@@ -4715,7 +4715,6 @@
         }
       }
     },
-<<<<<<< HEAD
     "sqlstring": {
       "version": "2.0.1",
       "from": "sqlstring@2.0.1",
@@ -4726,8 +4725,6 @@
       "from": "string_decoder@>=0.10.0 <0.11.0",
       "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-0.10.31.tgz"
     },
-=======
->>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
     "webpack": {
       "version": "1.13.1",
       "from": "webpack@>=1.13.1 <2.0.0",

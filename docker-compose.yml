@@ -3,10 +3,6 @@ dockerwhattodo:
 <<<<<<< HEAD
         ports:
                 - '3000:3000'
-=======
-        ports:                 
-                - '8080:8080'
->>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
         volumes:
                 - .:/home/app/what-to-do-docker
                 - /home/app/what-to-do-docker/node_modules

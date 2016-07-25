@@ -5,7 +5,6 @@ npm install
 
 npm start to host client files on port 8080
 
-<<<<<<< HEAD
 localhost:8080 to look at our app
 
 #Frameworks and API 
@@ -46,6 +45,4 @@ How:
 The following tutorials are good to get you started:
 http://airbnb.io/enzyme/docs/guides/mocha.html
 https://semaphoreci.com/community/tutorials/testing-react-components-with-enzyme-and-mocha
-=======
-localhost:8080 to look at our app
->>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
+

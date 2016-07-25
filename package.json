@@ -4,27 +4,16 @@
   "description": "Itinerary planning app",
   "main": "app",
   "scripts": {
-<<<<<<< HEAD
     "test": "mocha  --compilers js:babel-register --recursive",
     "start": "webpack-dev-server --host 0.0.0.0 --hot --history-api-fallback",
     "build": "webpack --progress --colors",
     "copy": " cp ./Client/index.html ./server/ | cp ./Client/index.js ./server/ | cp ./Client/styles.css ./server/ ",
     "runserver" : "npm run build && npm run copy"
-=======
-    "test": "test",
-    "start": "webpack-dev-server --host 0.0.0.0 --hot",
-    "build": "webpack --progress --colors",
-    "copy": " cp ./Client/index.html /var/www/html | cp ./Client/index.js /var/www/html | cp ./Client/styles.css /var/www/html "
->>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
   },
   "author": "COMA",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "babel-core": "^6.11.4",
-=======
-    "babel-core": "^6.10.4",
->>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
@@ -36,18 +25,13 @@
     "mysql": "^2.11.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-<<<<<<< HEAD
     "react-facebook-login": "^3.1.0",
     "react-router": "^2.6.0",
-=======
-    "react-router": "^2.5.2",
->>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
     "react-toggle-display": "^2.0.2",
     "request": "^2.73.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
-<<<<<<< HEAD
   "devDependencies": {
     "babel-register": "^6.9.0",
     "chai": "^3.5.0",
@@ -59,9 +43,6 @@
     "react-dom": "https://registry.npmjs.org/react-dom/-/react-dom-15.2.1.tgz",
     "sinon": "^1.17.4"
   },
-=======
-  "devDependencies": {},
->>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
   "repository": {
     "type": "git",
     "url": "git+https://github.com/melatonin355/whatToDo.git"
