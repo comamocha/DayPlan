@@ -49,7 +49,6 @@ class Main extends React.Component {
     })
   }
 
-
   deleteEvent(eventId) {
     var list = [];
     var i = 0;
@@ -155,7 +154,6 @@ class Main extends React.Component {
         </div>
 
         <div className="col-xs-12">
-
         <div className="col-xs-12 col-md-5" id="map">
           <MapComponent list={this.state.list}/>
         </div>

@@ -25,7 +25,6 @@ class ItineraryOptionsComponent extends React.Component {
     }
   }
 
-
   //following edit functions take inputted values and stores them to the state
   editLocation(e){
     this.setState({location: e.target.value})  
@@ -48,7 +47,6 @@ class ItineraryOptionsComponent extends React.Component {
   }
 
   render() {
-
     //this allows us to pass the edited event back to our main.jsx state which is then reflected on our itinerary component
     var obj = this.state;
     return (

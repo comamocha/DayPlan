@@ -53,7 +53,6 @@ class YelpComponent extends React.Component {
   //Searches Yelp API and sets response in State
   onInputChange(term) {
     self = this;
-    //console.log(term);
 
     var data = null;
 
@@ -62,7 +61,6 @@ class YelpComponent extends React.Component {
 
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
-        //console.log(this.responseText);
 
         //Todo: handle response codes from server
         //304 = Not Modified (cached version), 200 =	OK, 404 = Not Found 
