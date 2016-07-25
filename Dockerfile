@@ -23,16 +23,15 @@ RUN chown -R app:app $HOME/*
 #Use user "app" instead of root and run npm install
 USER app
 WORKDIR $HOME/what-to-do-docker
-RUN npm install
 
 #Copy current working files to docker container
 COPY  . $HOME/what-to-do-docker/
-
-#Allow user to be able to see port 8080 which lives in container
-EXPOSE 8080
+RUN npm install
+#Allow user to be able to see port 3000 which lives in container
+EXPOSE 3000
 
 #Run webpack with npm start
-CMD ["npm", "start"]
+CMD ["npm", "run", "runserver"]
 
 
 
