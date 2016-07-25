@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use('/', router);
 
-//Start Enable CORS: 
+//Start Enable CORS:
 //http://enable-cors.org/server_expressjs.html
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -22,7 +22,7 @@ app.use(function(req, res, next) {
 });
 //End Enable CORS
 // below may change to compiled folder for react
-app.use(express.static(__dirname + '/../client')); 
+app.use(express.static( './server'));
 
 
 app.listen(port, function() {
