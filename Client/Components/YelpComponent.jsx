@@ -1,5 +1,6 @@
 import React from 'react';
 
+var yelpLocation = 'http://198.199.95.16:3000';
 
 //Yelp Component renders yelp search form and results
 class YelpComponent extends React.Component {
@@ -42,7 +43,7 @@ class YelpComponent extends React.Component {
       }
     })
 
-    xhr.open('GET', 'http://localhost:3000/ReviewsYelp?search=' + businessesId);
+    xhr.open('GET', yelpLocation + '/ReviewsYelp?search=' + businessesId);
     xhr.send(data);
     //console.log("clicked that guy",businessesId );
 
@@ -106,7 +107,7 @@ class YelpComponent extends React.Component {
       }
     });
 
-    xhr.open('GET', 'http://localhost:3000/BusinessYelp?term=' + term + '&location=' + this.state.location);
+    xhr.open('GET', yelpLocation + '/BusinessYelp?term=' + term + '&location=' + this.state.location);
     xhr.send(data);
   }
 

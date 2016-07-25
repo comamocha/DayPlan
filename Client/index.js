@@ -26902,7 +26902,37 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // {
+	//   key: 0,
+	//   begin: '7:00 P.M',
+	//   end: '8:00 P.M',
+	//   //possibly add date slot 
+	//   location: '375 Bush St, San Francisco, CA 94104',
+	//   name: 'Pagan Idol',
+	//   description: 'A couple friends and I are going to get wasted.'
+	// }, {
+	//   key: 1,
+	//   begin: '8:00 P.M',
+	//   end: '12:00 P.M',
+	//   location: '375 Bush St, San Francisco, CA 94104',
+	//   name: 'Pagan Idol',
+	//   description: 'Continued drinking.'
+	// }, {
+	//   key: 2,
+	//   begin: '12:00 P.M',
+	//   end: '1:00 P.M',
+	//   location: '375 Bush St, San Francisco, CA 94104',
+	//   name: 'Pagan Idol',
+	//   description: 'Continued drinking.'
+	// }, {
+	//   key: 3,
+	//   begin: '11:00 A.M',
+	//   end: '12:00 P.M',
+	//   location: '375 Bush St, San Francisco, CA 94104',
+	//   name: 'Pagan Idol',
+	//   description: 'Continued drinking.'
+	// }
+
 
 	var Main = function (_React$Component) {
 	  _inherits(Main, _React$Component);
@@ -26913,43 +26943,46 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props));
 
 	    _this.state = {
-	      list: [{
-	        key: 0,
-	        begin: '7:00 P.M',
-	        end: '8:00 P.M',
-	        //possibly add date slot 
-	        location: '375 Bush St, San Francisco, CA 94104',
-	        name: 'Pagan Idol',
-	        description: 'A couple friends and I are going to get wasted.'
-	      }, {
-	        key: 1,
-	        begin: '8:00 P.M',
-	        end: '12:00 P.M',
-	        location: '375 Bush St, San Francisco, CA 94104',
-	        name: 'Pagan Idol',
-	        description: 'Continued drinking.'
-	      }, {
-	        key: 2,
-	        begin: '12:00 P.M',
-	        end: '1:00 P.M',
-	        location: '375 Bush St, San Francisco, CA 94104',
-	        name: 'Pagan Idol',
-	        description: 'Continued drinking.'
-	      }, {
-	        key: 3,
-	        begin: '11:00 A.M',
-	        end: '12:00 P.M',
-	        location: '375 Bush St, San Francisco, CA 94104',
-	        name: 'Pagan Idol',
-	        description: 'Continued drinking.'
-	      }],
+	      list: [],
 	      toggleOptions: false,
-	      eventId: 3
+	      eventId: 3,
+	      itineraryName: 'testItin'
 	    };
 	    return _this;
 	  }
 
+	  //build out an add event function
+	  //passed down to yelp; which on click will add event to list
+	  //should provide adress, name of location, and gps coordinates
+	  //it will also toggleOptions to populate edit screen for event
+
 	  _createClass(Main, [{
+	    key: 'addEvent',
+	    value: function addEvent(address, name, gps) {
+	      //create event obj to add to List in State
+	      var obj = {
+	        key: this.state.list.length,
+	        begin: '',
+	        end: '',
+	        location: address,
+	        name: name,
+	        description: '',
+	        gps: gps
+	      };
+	      //copy down original list into addToList
+	      var addToList = this.state.list.slice();
+	      //add new event to addToList
+	      addToList.push(obj);
+	      //use this.setState to add newly modified itinerary
+	      //also add EventId so edit component can grab right event to edit
+	      //toggleOptions switchs view to our edit screen
+	      this.setState({
+	        list: addToList,
+	        eventId: obj.key,
+	        toggleOptions: !this.state.toggleOptions
+	      });
+	    }
+	  }, {
 	    key: 'deleteEvent',
 	    value: function deleteEvent(eventId) {
 	      var list = [];
@@ -27014,6 +27047,7 @@
 	      //options contains our IToptions component w/functionality
 	      //if we are editing/creating an event then toggleOptions returns true
 	      //this provides Itoptions component the proper event using eventId to edit
+
 	      var options;
 	      if (this.state.toggleOptions) {
 	        options = _react2.default.createElement(_ItineraryOptionsComponent2.default, {
@@ -27033,12 +27067,12 @@
 	            _react2.default.createElement(
 	              'div',
 	              { id: 'yelp', className: 'col-xs-12 col-md-6' },
-	              _react2.default.createElement(_YelpComponent2.default, null)
+	              _react2.default.createElement(_YelpComponent2.default, { addEvent: this.addEvent.bind(this) })
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { id: 'itinerary', className: 'col-xs-12 col-md-6' },
-	              _react2.default.createElement(_ItineraryComponent2.default, { list: this.state.list,
+	              _react2.default.createElement(_ItineraryComponent2.default, { list: this.state.list, name: this.state.itineraryName,
 	                deleteEvent: this.deleteEvent.bind(this),
 	                editEvent: this.editEvent.bind(this) })
 	            )
@@ -27102,6 +27136,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var yelpLocation = 'http://198.199.95.16:3000';
+
 	//Yelp Component renders yelp search form and results
 
 	var YelpComponent = function (_React$Component) {
@@ -27117,7 +27153,7 @@
 
 	    _this.state = { location: 'San Francisco', results: '', solutionObjects: '', currentOverlay: '' };
 	    //this.yelpReview.bind(this);
-
+	    _this.props.addEvent.bind(_this);
 	    return _this;
 	  }
 
@@ -27139,9 +27175,9 @@
 
 	      xhr.addEventListener("readystatechange", function () {
 	        if (this.readyState === 4) {
-	          console.log(this.responseText);
+	          //console.log(this.responseText);
 	          var businessesArray = JSON.parse(this.responseText).reviews;
-	          console.log(businessesArray);
+	          //console.log(businessesArray);
 	          self.setState({
 	            currentOverlay: _react2.default.createElement(
 	              'div',
@@ -27161,7 +27197,7 @@
 	        }
 	      });
 
-	      xhr.open('GET', 'http://localhost:3000/ReviewsYelp?search=' + businessesId);
+	      xhr.open('GET', yelpLocation + '/ReviewsYelp?search=' + businessesId);
 	      xhr.send(data);
 	      //console.log("clicked that guy",businessesId );
 	    }
@@ -27172,7 +27208,7 @@
 	    //Searches Yelp API and sets response in State
 	    value: function onInputChange(term) {
 	      self = this;
-	      console.log(term);
+	      //console.log(term);
 
 	      var data = null;
 
@@ -27181,7 +27217,7 @@
 
 	      xhr.addEventListener("readystatechange", function () {
 	        if (this.readyState === 4) {
-	          console.log(this.responseText);
+	          //console.log(this.responseText);
 
 	          //Todo: handle response codes from server
 	          //304 = Not Modified (cached version), 200 =	OK, 404 = Not Found 
@@ -27198,12 +27234,12 @@
 
 	            var solution = [];
 	            var solutionObjects = [];
-
+	            // self.yelpReview.bind(self, businessesArray[i].id)
 	            for (var i = 0; i < businessesArray.length & i < 3; i++) {
 	              solutionObjects.push(businessesArray[i]);
 	              solution.push(_react2.default.createElement(
 	                'tr',
-	                { placeholder: businessesArray[i].id, onClick: self.yelpReview.bind(self, businessesArray[i].id) },
+	                { placeholder: businessesArray[i].id, onClick: self.props.addEvent.bind(self, businessesArray[i].location.address1 + ", " + businessesArray[i].location.city + ", " + businessesArray[i].location.state + " " + businessesArray[i].location.zip_code, businessesArray[i].name, businessesArray[i].coordinates) },
 	                _react2.default.createElement(
 	                  'td',
 	                  null,
@@ -27257,7 +27293,7 @@
 	        }
 	      });
 
-	      xhr.open('GET', 'http://localhost:3000/BusinessYelp?term=' + term + '&location=' + this.state.location);
+	      xhr.open('GET', yelpLocation + '/BusinessYelp?term=' + term + '&location=' + this.state.location);
 	      xhr.send(data);
 	    }
 	  }, {
@@ -27445,20 +27481,27 @@
 	  }
 
 	  _createClass(ItineraryComponent, [{
+	    key: 'createXmlHttpRequestObject',
+	    value: function createXmlHttpRequestObject() {
+	      //xmlHttpRequest works for nearly everything but Internet Explorer
+	      //ActiveXObject works for Internet Explorer
+	      var xmlHttp;
+	      if (window.XMLHttpRequest) {
+	        xmlHttp = new XMLHttpRequest();
+	      } else {
+	        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+	      }
+	      return xmlHttp;
+	    }
+	  }, {
 	    key: 'saveItinerary',
 	    value: function saveItinerary() {
-	      $.ajax({
-	        url: '/list',
-	        dataType: 'json',
-	        type: 'POST',
-	        data: this.props.list,
-	        success: function success(data) {
-	          alert('Itinerary saved!');
-	        },
-	        error: function error(xhr, status, err) {
-	          console.error('/list', status, err.toString());
-	        }
-	      });
+	      var data = "data=" + JSON.stringify({ name: 'matt', list: this.props.list });
+	      var xhr = this.createXmlHttpRequestObject();
+	      xhr.withCredentials = false;
+	      xhr.open("POST", "http://127.0.0.1:3000/list");
+	      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	      xhr.send(data);
 	    }
 	  }, {
 	    key: 'render',
@@ -27550,26 +27593,6 @@
 	;
 
 	exports.default = ItineraryComponent;
-
-	// <div className="modal">
-	//   <div className="modal-dialog">
-	//     <div className="modal-content">
-	//       <div className="modal-header">
-	//         <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	//         <h4 className="modal-title">Edit or Delete?</h4>
-	//       </div>
-	//       <div className="modal-body">
-	//         <p>Would you like to edit or delete the following event?</p>
-	//         <p>{this.eventInfo}</p>
-	//       </div>
-	//       <div className="modal-footer">
-	//         <button type="button" className="btn btn-default" data-dismiss="modal">Edit</button>
-	//         <button type="button" className="btn btn-primary">Delete</button>
-	//         <button type="button" className="btn btn-primary">Neither</button>
-	//       </div>
-	//     </div>
-	//   </div>
-	// </div>
 
 /***/ },
 /* 239 */
