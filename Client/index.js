@@ -21167,7 +21167,11 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
+<<<<<<< HEAD
 	        { className: 'col-xs-12' },
+=======
+	        { className: 'col-xs-10 col-xs-offset-1' },
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	        _react2.default.createElement(
 	          'nav',
 	          { id: 'nav', className: 'navbar navbar-default' },
@@ -21201,6 +21205,7 @@
 	                'Login'
 	              )
 	            )
+<<<<<<< HEAD
 	          ),
 	          _react2.default.createElement(
 	            'ul',
@@ -21214,6 +21219,8 @@
 	                'DayPlanner.io'
 	              )
 	            )
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -26892,16 +26899,20 @@
 
 	var _ItineraryOptionsComponent2 = _interopRequireDefault(_ItineraryOptionsComponent);
 
+<<<<<<< HEAD
 	var _reactToggleDisplay = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-toggle-display\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _reactToggleDisplay2 = _interopRequireDefault(_reactToggleDisplay);
 
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
+<<<<<<< HEAD
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // {
 	//   key: 0,
 	//   begin: '7:00 P.M',
@@ -26933,6 +26944,9 @@
 	//   description: 'Continued drinking.'
 	// }
 
+=======
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 
 	var Main = function (_React$Component) {
 	  _inherits(Main, _React$Component);
@@ -26943,14 +26957,50 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props));
 
 	    _this.state = {
+<<<<<<< HEAD
 	      list: [],
 	      toggleOptions: false,
 	      eventId: 3,
 	      itineraryName: 'testItin'
+=======
+	      list: [{
+	        key: 0,
+	        begin: '7:00 P.M',
+	        end: '8:00 P.M',
+	        //possibly add date slot 
+	        location: '375 Bush St, San Francisco, CA 94104',
+	        name: 'Pagan Idol',
+	        description: 'A couple friends and I are going to get wasted.'
+	      }, {
+	        key: 1,
+	        begin: '8:00 P.M',
+	        end: '12:00 P.M',
+	        location: '375 Bush St, San Francisco, CA 94104',
+	        name: 'Pagan Idol',
+	        description: 'Continued drinking.'
+	      }, {
+	        key: 2,
+	        begin: '12:00 P.M',
+	        end: '1:00 P.M',
+	        location: '375 Bush St, San Francisco, CA 94104',
+	        name: 'Pagan Idol',
+	        description: 'Continued drinking.'
+	      }, {
+	        key: 3,
+	        begin: '11:00 A.M',
+	        end: '12:00 P.M',
+	        location: '375 Bush St, San Francisco, CA 94104',
+	        name: 'Pagan Idol',
+	        description: 'Continued drinking.'
+	      }],
+	      toggleOptions: false,
+	      eventId: 3
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	    };
 	    return _this;
 	  }
 
+<<<<<<< HEAD
 	  //build out an add event function
 	  //passed down to yelp; which on click will add event to list
 	  //should provide adress, name of location, and gps coordinates
@@ -26983,12 +27033,16 @@
 	      });
 	    }
 	  }, {
+=======
+	  _createClass(Main, [{
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	    key: 'deleteEvent',
 	    value: function deleteEvent(eventId) {
 	      var list = [];
 	      var i = 0;
 	      this.state.list.forEach(function (val, key) {
 	        if (val['key'] !== eventId) {
+<<<<<<< HEAD
 	          val.key = i;
 	          i++;
 	          list.push(val);
@@ -27011,18 +27065,32 @@
 	      this.setState({ list: list,
 	        toggleOptions: !this.state.toggleOptions
 	      });
+=======
+	          i++;
+	          val.key = i;
+	          list.push(val);
+	        }
+	      });
+	      this.setState({ list: list });
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	    }
 	  }, {
 	    key: 'editEvent',
 	    value: function editEvent(eventId) {
+<<<<<<< HEAD
 	      this.setState({
 	        eventId: eventId,
 	        toggleOptions: !this.state.toggleOptions
 	      });
+=======
+	      this.setState({ toggleOptions: !this.state.toggleOptions });
+	      this.setState({ eventId: eventId });
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	    }
 	  }, {
 	    key: 'receiveEditfromOptions',
 	    value: function receiveEditfromOptions(obj) {
+<<<<<<< HEAD
 	      //rebuild itinerary; newList will contain new itinerary with edits
 	      var newList = [];
 	      this.state.list.forEach(function (val, key) {
@@ -27035,30 +27103,57 @@
 	        }
 	      });
 	      //set the state with the new updated itinerary and toggledisplay to hide Itoptions component and show main components
+=======
+	      var newList = [];
+	      this.state.list.forEach(function (val, key) {
+	        if (val.key !== obj.key) {
+	          newList.push(val);
+	        } else {
+	          newList.push(obj);
+	        }
+	      });
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	      this.setState({
 	        list: newList,
 	        toggleOptions: !this.state.toggleOptions
 	      });
+<<<<<<< HEAD
 	      console.log(this.state);
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+<<<<<<< HEAD
 	      //options contains our IToptions component w/functionality
 	      //if we are editing/creating an event then toggleOptions returns true
 	      //this provides Itoptions component the proper event using eventId to edit
 
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	      var options;
 	      if (this.state.toggleOptions) {
 	        options = _react2.default.createElement(_ItineraryOptionsComponent2.default, {
 	          event: this.state.list[this.state.eventId],
+<<<<<<< HEAD
 	          deleteEvent: this.deleteEventOnOptions.bind(this),
 	          edit: this.receiveEditfromOptions.bind(this) });
+=======
+	          edit: this.receiveEditfromOptions.bind(this) });
+	      } else {
+	        options = _react2.default.createElement(
+	          'div',
+	          null,
+	          'nothing here'
+	        );
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	      }
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(
+<<<<<<< HEAD
 	          _reactToggleDisplay2.default,
 	          { show: !this.state.toggleOptions },
 	          _react2.default.createElement(
@@ -27100,6 +27195,41 @@
 	            { id: 'itineraryOptions' },
 	            options
 	          )
+=======
+	          'div',
+	          { className: 'col-xs-12' },
+	          _react2.default.createElement(
+	            'div',
+	            { id: 'yelp', className: 'col-xs-6' },
+	            _react2.default.createElement(_YelpComponent2.default, null)
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { id: 'itinerary', className: 'col-xs-6' },
+	            _react2.default.createElement(_ItineraryComponent2.default, { list: this.state.list,
+	              deleteEvent: this.deleteEvent.bind(this),
+	              editEvent: this.editEvent.bind(this) })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-xs-12' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-6', id: 'map' },
+	            _react2.default.createElement(_MapComponent2.default, null)
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-6', id: 'itineraryList' },
+	            _react2.default.createElement(_ItineraryListComponent2.default, null)
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'itineraryOptions' },
+	          options
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	        )
 	      );
 	    }
@@ -27128,24 +27258,31 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+<<<<<<< HEAD
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+<<<<<<< HEAD
 	var yelpLocation = 'http://198.199.95.16:3000';
 
 	//Yelp Component renders yelp search form and results
 
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	var YelpComponent = function (_React$Component) {
 	  _inherits(YelpComponent, _React$Component);
 
 	  function YelpComponent(props) {
 	    _classCallCheck(this, YelpComponent);
 
+<<<<<<< HEAD
 	    //state location= city you are searchin in
 	    //state results = results that returned from Yelp API (Made by us)
 
@@ -27209,6 +27346,25 @@
 	    value: function onInputChange(term) {
 	      self = this;
 	      //console.log(term);
+=======
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(YelpComponent).call(this, props));
+
+	    _this.state = { location: 'San Francisco', results: 'Searching..' };
+
+	    return _this;
+	  }
+
+	  _createClass(YelpComponent, [{
+	    key: 'handleTermChange',
+	    value: function handleTermChange(term) {
+	      console.log(term);
+	    }
+	  }, {
+	    key: 'onInputChange',
+	    value: function onInputChange(term) {
+	      self = this;
+	      console.log(term);
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 
 	      var data = null;
 
@@ -27217,6 +27373,7 @@
 
 	      xhr.addEventListener("readystatechange", function () {
 	        if (this.readyState === 4) {
+<<<<<<< HEAD
 	          //console.log(this.responseText);
 
 	          //Todo: handle response codes from server
@@ -27294,6 +27451,15 @@
 	      });
 
 	      xhr.open('GET', yelpLocation + '/BusinessYelp?term=' + term + '&location=' + this.state.location);
+=======
+	          console.log(this.responseText);
+
+	          self.setState({ results: this.responseText });
+	        }
+	      });
+
+	      xhr.open('GET', 'http://localhost:3000/AutocompleteYelp?search=' + term);
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	      xhr.send(data);
 	    }
 	  }, {
@@ -27304,12 +27470,21 @@
 	      this.setState({ location: term });
 	    }
 	  }, {
+<<<<<<< HEAD
+=======
+	    key: 'handleSearch',
+	    value: function handleSearch(term) {
+	      console.log("Searching");
+	    }
+	  }, {
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
 
 	      return _react2.default.createElement(
 	        'div',
+<<<<<<< HEAD
 	        { className: 'mainComponent' },
 	        _react2.default.createElement(
 	          'h3',
@@ -27319,6 +27494,13 @@
 	        _react2.default.createElement(
 	          'div',
 	          _defineProperty({ className: 'text-center' }, 'className', 'col-xs-12'),
+=======
+	        null,
+	        '*YELP* this is the yelp component; talks with yelp API to handle searches i.e.https://github.com/olalonde/node-yelp for yelp search examples location and type (term) build out component to contain time and detail field; should be able to relay information over to our itinerary',
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container' },
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	          _react2.default.createElement(
 	            'form',
 	            null,
@@ -27327,11 +27509,17 @@
 	              { className: 'location' },
 	              _react2.default.createElement('input', { placeholder: 'San Francisco', onChange: function onChange(event) {
 	                  return _this2.onLocationChange(event.target.value);
+<<<<<<< HEAD
 	                } })
+=======
+	                } }),
+	              this.state.location
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'search' },
+<<<<<<< HEAD
 	              _react2.default.createElement('input', { placeholder: 'Golden Gate Bridge', onChange: function onChange(event) {
 	                  return _this2.onInputChange(event.target.value);
 	                } })
@@ -27371,6 +27559,19 @@
 	            )
 	          ),
 	          this.state.currentOverlay
+=======
+	              _react2.default.createElement('input', { onChange: function onChange(event) {
+	                  return _this2.onInputChange(event.target.value);
+	                } }),
+	              this.state.results
+	            ),
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'searchButton', type: 'button', onClick: this.handleSearch },
+	              'Search'
+	            )
+	          )
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	        )
 	      );
 	    }
@@ -27481,6 +27682,7 @@
 	  }
 
 	  _createClass(ItineraryComponent, [{
+<<<<<<< HEAD
 	    key: 'createXmlHttpRequestObject',
 	    value: function createXmlHttpRequestObject() {
 	      //xmlHttpRequest works for nearly everything but Internet Explorer
@@ -27502,6 +27704,22 @@
 	      xhr.open("POST", "http://127.0.0.1:3000/list");
 	      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	      xhr.send(data);
+=======
+	    key: 'saveItinerary',
+	    value: function saveItinerary() {
+	      $.ajax({
+	        url: '/list',
+	        dataType: 'json',
+	        type: 'POST',
+	        data: this.props.list,
+	        success: function success(data) {
+	          alert('Itinerary saved!');
+	        },
+	        error: function error(xhr, status, err) {
+	          console.error('/list', status, err.toString());
+	        }
+	      });
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	    }
 	  }, {
 	    key: 'render',
@@ -27514,7 +27732,11 @@
 	        _react2.default.createElement(
 	          'h3',
 	          { className: 'text-center' },
+<<<<<<< HEAD
 	          'Edit Your Plans'
+=======
+	          'Your Itinerary'
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	        ),
 	        _react2.default.createElement(
 	          'table',
@@ -27594,6 +27816,29 @@
 
 	exports.default = ItineraryComponent;
 
+<<<<<<< HEAD
+=======
+	// <div className="modal">
+	//   <div className="modal-dialog">
+	//     <div className="modal-content">
+	//       <div className="modal-header">
+	//         <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	//         <h4 className="modal-title">Edit or Delete?</h4>
+	//       </div>
+	//       <div className="modal-body">
+	//         <p>Would you like to edit or delete the following event?</p>
+	//         <p>{this.eventInfo}</p>
+	//       </div>
+	//       <div className="modal-footer">
+	//         <button type="button" className="btn btn-default" data-dismiss="modal">Edit</button>
+	//         <button type="button" className="btn btn-primary">Delete</button>
+	//         <button type="button" className="btn btn-primary">Neither</button>
+	//       </div>
+	//     </div>
+	//   </div>
+	// </div>
+
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 /***/ },
 /* 239 */
 /***/ function(module, exports, __webpack_require__) {
@@ -27636,6 +27881,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
+<<<<<<< HEAD
 	        { className: 'mainComponent' },
 	        _react2.default.createElement(
 	          'div',
@@ -27647,6 +27893,10 @@
 	          ),
 	          _react2.default.createElement(_googleMapsReact2.default, { google: this.props.google })
 	        )
+=======
+	        { className: 'actualMap' },
+	        _react2.default.createElement(_googleMapsReact2.default, { google: this.props.google })
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	      );
 	    }
 	  }]);
@@ -29091,7 +29341,11 @@
 /* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 	"use strict";
+=======
+	'use strict';
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -29121,6 +29375,7 @@
 	  }
 
 	  _createClass(ItineraryListComponent, [{
+<<<<<<< HEAD
 	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -29132,6 +29387,14 @@
 	          "Your Itineraries"
 	        ),
 	        "*LIST OF ITINERARIES COMPONENT* List of all of our itineraries we have created. example: array of objects  display: is date and title"
+=======
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        '*LIST OF ITINERARIES COMPONENT* List of all of our itineraries we have created. example: array of objects  display: is date and title'
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	      );
 	    }
 	  }]);
@@ -29197,9 +29460,12 @@
 	  //   })
 	  // }
 
+<<<<<<< HEAD
 	  //following edit functions take inputted values and stores them to the state
 
 
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	  _createClass(ItineraryOptionsComponent, [{
 	    key: "editLocation",
 	    value: function editLocation(e) {
@@ -29228,20 +29494,28 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
+<<<<<<< HEAD
 
 	      //this allows us to pass the edited event back to our main.jsx state which is then reflected on our itinerary component
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	      var obj = this.state;
 	      return _react2.default.createElement(
 	        "div",
 	        null,
 	        _react2.default.createElement(
 	          "form",
+<<<<<<< HEAD
 	          { className: "optionsForm" },
+=======
+	          null,
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	          _react2.default.createElement(
 	            "div",
 	            null,
 	            _react2.default.createElement(
 	              "label",
+<<<<<<< HEAD
 	              { className: "optionsLabel" },
 	              "Name  "
 	            ),
@@ -29264,12 +29538,19 @@
 	              null,
 	              _react2.default.createElement("input", { className: "optionsInput2", placeholder: "Location", type: "text", defaultValue: this.state.location, onChange: this.editLocation.bind(this) })
 	            )
+=======
+	              null,
+	              "Location"
+	            ),
+	            _react2.default.createElement("input", { placeholder: "Location", type: "text", defaultValue: this.state.location, onChange: this.editLocation.bind(this) })
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	          ),
 	          _react2.default.createElement(
 	            "div",
 	            null,
 	            _react2.default.createElement(
 	              "label",
+<<<<<<< HEAD
 	              { className: "optionsLabel" },
 	              "Description "
 	            ),
@@ -29286,6 +29567,10 @@
 	              "label",
 	              { className: "optionsLabel" },
 	              "Begin  "
+=======
+	              null,
+	              "Begin : "
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	            ),
 	            _react2.default.createElement(
 	              "select",
@@ -29304,8 +29589,13 @@
 	            null,
 	            _react2.default.createElement(
 	              "label",
+<<<<<<< HEAD
 	              { className: "optionsLabel" },
 	              "End  "
+=======
+	              null,
+	              "End : "
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	            ),
 	            _react2.default.createElement(
 	              "select",
@@ -29320,13 +29610,42 @@
 	            )
 	          ),
 	          _react2.default.createElement(
+<<<<<<< HEAD
 	            "button",
 	            { className: "optionsButton btn btn-success btn-small", type: "button", onClick: this.props.edit.bind(this, obj) },
+=======
+	            "div",
+	            null,
+	            _react2.default.createElement(
+	              "label",
+	              null,
+	              "Name :"
+	            ),
+	            _react2.default.createElement("input", { placeholder: "name", defaultValue: this.state.name, onChange: this.editName.bind(this) })
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            null,
+	            _react2.default.createElement(
+	              "label",
+	              null,
+	              "Description"
+	            ),
+	            _react2.default.createElement("input", { placeholder: "Description", defaultValue: this.state.description, onChange: this.editDescription.bind(this) })
+	          ),
+	          _react2.default.createElement(
+	            "button",
+	            { type: "button", onClick: this.props.edit.bind(this, obj) },
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	            "Submit"
 	          ),
 	          _react2.default.createElement(
 	            "button",
+<<<<<<< HEAD
 	            { className: "optionsButton btn btn-danger btn-small", type: "button", onClick: this.props.deleteEvent.bind(this, obj.key) },
+=======
+	            { type: "button" },
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	            "Delete"
 	          )
 	        )
@@ -29423,7 +29742,11 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
+<<<<<<< HEAD
 	          { id: 'loginForm', className: 'col-xs-10 col-xs-offset-1 col-sm-8  col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4' },
+=======
+	          { id: 'loginForm', className: 'col-xs-6 col-xs-offset-3' },
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 	          _react2.default.createElement(
 	            'form',
 	            { className: 'form-horizontal col-xs-8 col-xs-offset-2' },

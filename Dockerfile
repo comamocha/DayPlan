@@ -18,6 +18,7 @@ ENV HOME=/home/app
 
 #copy package.json and npm-shrinkwrap
 COPY package.json npm-shrinkwrap.json $HOME/what-to-do-docker/
+<<<<<<< HEAD
 #RUN chown -R app:app $HOME/*
 
 #Use user "app" instead of root and run npm install
@@ -32,6 +33,23 @@ EXPOSE 3000
 
 #Run webpack with npm start
 CMD ["npm", "run", "runserver"]
+=======
+RUN chown -R app:app $HOME/*
+
+#Use user "app" instead of root and run npm install
+USER app
+WORKDIR $HOME/what-to-do-docker
+RUN npm install
+
+#Copy current working files to docker container
+COPY  . $HOME/what-to-do-docker/
+
+#Allow user to be able to see port 8080 which lives in container
+EXPOSE 8080
+
+#Run webpack with npm start
+CMD ["npm", "start"]
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
 
 
 

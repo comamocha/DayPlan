@@ -3601,11 +3601,14 @@
         }
       }
     },
+<<<<<<< HEAD
     "bignumber.js": {
       "version": "2.3.0",
       "from": "bignumber.js@2.3.0",
       "resolved": "https://registry.npmjs.org/bignumber.js/-/bignumber.js-2.3.0.tgz"
     },
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
     "bluebird": {
       "version": "3.4.1",
       "from": "bluebird@>=3.4.1 <4.0.0",
@@ -3725,11 +3728,14 @@
         }
       }
     },
+<<<<<<< HEAD
     "core-util-is": {
       "version": "1.0.2",
       "from": "core-util-is@>=1.0.0 <1.1.0",
       "resolved": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz"
     },
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
     "express": {
       "version": "4.14.0",
       "from": "express@>=4.14.0 <5.0.0",
@@ -4051,6 +4057,7 @@
         }
       }
     },
+<<<<<<< HEAD
     "inherits": {
       "version": "2.0.1",
       "from": "inherits@>=2.0.1 <2.1.0",
@@ -4061,6 +4068,8 @@
       "from": "isarray@0.0.1",
       "resolved": "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz"
     },
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
     "morgan": {
       "version": "1.7.0",
       "from": "morgan@>=1.7.0 <2.0.0",
@@ -4110,7 +4119,50 @@
     "mysql": {
       "version": "2.11.1",
       "from": "mysql@>=2.11.1 <3.0.0",
+<<<<<<< HEAD
       "resolved": "https://registry.npmjs.org/mysql/-/mysql-2.11.1.tgz"
+=======
+      "resolved": "https://registry.npmjs.org/mysql/-/mysql-2.11.1.tgz",
+      "dependencies": {
+        "bignumber.js": {
+          "version": "2.3.0",
+          "from": "bignumber.js@2.3.0",
+          "resolved": "https://registry.npmjs.org/bignumber.js/-/bignumber.js-2.3.0.tgz"
+        },
+        "readable-stream": {
+          "version": "1.1.14",
+          "from": "readable-stream@1.1.14",
+          "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.1.14.tgz",
+          "dependencies": {
+            "core-util-is": {
+              "version": "1.0.2",
+              "from": "core-util-is@>=1.0.0 <1.1.0",
+              "resolved": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz"
+            },
+            "inherits": {
+              "version": "2.0.1",
+              "from": "inherits@>=2.0.1 <2.1.0",
+              "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
+            },
+            "isarray": {
+              "version": "0.0.1",
+              "from": "isarray@0.0.1",
+              "resolved": "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz"
+            },
+            "string_decoder": {
+              "version": "0.10.31",
+              "from": "string_decoder@>=0.10.0 <0.11.0",
+              "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-0.10.31.tgz"
+            }
+          }
+        },
+        "sqlstring": {
+          "version": "2.0.1",
+          "from": "sqlstring@2.0.1",
+          "resolved": "https://registry.npmjs.org/sqlstring/-/sqlstring-2.0.1.tgz"
+        }
+      }
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
     },
     "react": {
       "version": "15.2.1",
@@ -4274,6 +4326,7 @@
         }
       }
     },
+<<<<<<< HEAD
     "react-toggle-display": {
       "version": "2.0.2",
       "from": "react-toggle-display@latest",
@@ -4284,6 +4337,8 @@
       "from": "readable-stream@1.1.14",
       "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.1.14.tgz"
     },
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
     "request": {
       "version": "2.73.0",
       "from": "request@>=2.73.0 <3.0.0",
@@ -4660,6 +4715,7 @@
         }
       }
     },
+<<<<<<< HEAD
     "sqlstring": {
       "version": "2.0.1",
       "from": "sqlstring@2.0.1",
@@ -4670,6 +4726,8 @@
       "from": "string_decoder@>=0.10.0 <0.11.0",
       "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-0.10.31.tgz"
     },
+=======
+>>>>>>> fc5ec23dab22a5d64968fec5fb0daf46d05c8c03
     "webpack": {
       "version": "1.13.1",
       "from": "webpack@>=1.13.1 <2.0.0",
