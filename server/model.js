@@ -57,6 +57,11 @@ module.exports = {
       VALUES ('" + parsed.name + "', '" + parsed.list + "')";
 
       return query(queryStr)
+    },
+    
+    get: function() {
+      var queryString = "select * from Itineraries";
+      return query(queryString)
     }
   },
 

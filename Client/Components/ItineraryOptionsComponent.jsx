@@ -20,7 +20,8 @@ class ItineraryOptionsComponent extends React.Component {
       end: this.props.event.end,
       location: this.props.event.location,
       name: this.props.event.name,
-      description: this.props.event.description
+      description: this.props.event.description,
+      gps: this.props.event.gps
     }
   }
 

@@ -15,6 +15,7 @@ router.delete('/itinerary', controller.itinerary.delete);
 
 //Itinerary List updates on load and any change to itinerary
 router.post('/list', controller.list.post);
+router.get('/list', controller.list.get);
 
 //API Calls
 router.get('/AutocompleteYelp', controller.api.AutocompleteYelp);

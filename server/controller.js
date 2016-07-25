@@ -13,7 +13,7 @@ module.exports = {
   
   login: {
     get: function(req, res) {
-      // res.redirect('../Client/login.html'); /* REDIRECT if static page; RENDER if new view */
+      res.redirect('../Client/login.html'); /* REDIRECT if static page; RENDER if new view */
     },
     post: function(req, res) {
       res.statusCode = 200;
@@ -42,6 +42,15 @@ module.exports = {
       .then(function() {
         model.list.get();
         res.status(200);
+      })
+    },
+
+    get: function(req, res) {
+      model.list.get()
+      .then(function(data) {
+        console.log(data);
+        res.status(200);
+        res.send(data);
       })
     }
   },

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import YelpComponent from './Components/YelpComponent.jsx';
 import ItineraryComponent from './Components/ItineraryComponent.jsx';
@@ -107,6 +106,23 @@ class Main extends React.Component {
     })
     console.log(this.state)
   }
+
+  openItin(eventId) {
+    var list = [];
+    var i = 0;
+    this.state.list.forEach(function(val, key) {
+      if (val['key'] !== eventId) {
+        val.key = i 
+        i++;
+        list.push(val);
+      }
+    });
+    this.setState({list: list})
+  }
+
+  updateItineraryActivities(activities) {
+    this.setState({list: activities})
+  }
    
   render() {
     //options contains our IToptions component w/functionality
@@ -140,13 +156,13 @@ class Main extends React.Component {
 
         <div className="col-xs-12">
 
-          <div className="col-xs-12 col-md-6" id="map">
-            <MapComponent />
-          </div>
+        <div className="col-xs-12 col-md-5" id="map">
+          <MapComponent list={this.state.list}/>
+        </div>
 
-          <div className="col-xs-12 col-md-6" id="itineraryList">
-            <ItineraryListComponent />
-          </div>
+        <div className="col-xs-12 col-md-5 col-md-offset-7" id="itineraryList">
+          <ItineraryListComponent updateActivities={this.updateItineraryActivities.bind(this)}/>
+        </div>
 
         </div>
         </ToggleDisplay>

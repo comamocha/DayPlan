@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+import {history} from 'react-router';
+import FacebookLogin from 'react-facebook-login';
 
 class Login extends React.Component {
-
 
         constructor(props) {
         super(props);
@@ -11,9 +12,6 @@ class Login extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
-
-
 /*
     ***************************************************
      * @handleUsernameChange
@@ -21,6 +19,7 @@ class Login extends React.Component {
      * e = represents the event.
     *****************************************************
 */
+
     handleUsernameChange(e) {
       this.setState({username: e.target.value});
       console.log(this.state.username);
@@ -33,6 +32,15 @@ class Login extends React.Component {
 
     handleSubmit(e) {
       console.log('username: ', this.state.username, '\npassword: ', this.state.password);
+    }
+
+    handleFBLogin (response) {
+      console.log(response);
+      if (response.accessToken) {
+        window.location = '/home';
+      } else {
+        window.location = '/login';
+      }
     }
 
     render() {
@@ -68,6 +76,10 @@ class Login extends React.Component {
                 <div className="row">
                   <button className='signUp btn btn-danger'>Sign Up!</button>
                 </div>
+                <FacebookLogin className='btn'
+                    appId='226645441063163'
+                    autoLoad={true}
+                    callback={this.handleFBLogin} />
               </fieldset>
             </form>
           </div>

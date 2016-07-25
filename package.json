@@ -5,7 +5,7 @@
   "main": "app",
   "scripts": {
     "test": "mocha  --compilers js:babel-register --recursive",
-    "start": "webpack-dev-server --host 0.0.0.0 --hot",
+    "start": "webpack-dev-server --host 0.0.0.0 --hot --history-api-fallback",
     "build": "webpack --progress --colors",
     "copy": " cp ./Client/index.html ./server/ | cp ./Client/index.js ./server/ | cp ./Client/styles.css ./server/ ",
     "runserver" : "npm run build && npm run copy"
@@ -25,6 +25,7 @@
     "mysql": "^2.11.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
+    "react-facebook-login": "^3.1.0",
     "react-router": "^2.6.0",
     "react-toggle-display": "^2.0.2",
     "request": "^2.73.0",
