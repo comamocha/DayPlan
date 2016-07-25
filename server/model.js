@@ -52,15 +52,24 @@ module.exports = {
 
   list: {
     post: function(data) {
+      console.log(data, 'this is the data before parsing')
       var parsed = JSON.parse(data);
+      console.log(parsed, 'this is the data after parsing')
       var queryStr = "INSERT INTO Itineraries (name, activities) \
-      VALUES ('" + parsed.name + "', '" + parsed.list + "')";
+      VALUES ('" + parsed.name + "', '" + data.list + "')";
 
-      return query(queryStr)
+
+      parsed.list.map(function(list) {
+        console.log(list);
+        query("INSERT INTO Activity (name, location, startTime, endTime, gps) \
+      VALUES ('" + list.name + "', '" + list.location + "', '" + list.begin + "', '" + list.end + "', '" + list.gps + "');")
+      })
+
+      return query(queryStr);
     },
     
     get: function() {
-      var queryString = "select * from Itineraries";
+      var queryString = "select * from Activity INNERJOIN Itineraries on Activity.itinerary_id = Itineraries.id;";
       return query(queryString)
     }
   },

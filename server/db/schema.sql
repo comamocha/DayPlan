@@ -1,4 +1,4 @@
--- DROP DATABASE Planner;
+DROP DATABASE Planner;
 CREATE DATABASE Planner;
 
 USE Planner;
@@ -26,8 +26,7 @@ CREATE TABLE Activity (
   location VARCHAR(200),
   startTime time,
   endTime time,
-  day date,
-  likes INTEGER default 0,
+  gps VARCHAR(100),
   itinerary_id INT,
   PRIMARY KEY (id)
 );
@@ -41,5 +40,5 @@ CREATE TABLE Users_itineraries (
 
 ALTER TABLE `Users_Itineraries` ADD FOREIGN KEY (user_id) REFERENCES `Users` (`id`);
 ALTER TABLE `Users_Itineraries` ADD FOREIGN KEY (itinerary_id) REFERENCES `Itineraries` (`id`);
-ALTER TABLE `Activity` ADD FOREIGN KEY (itinerary_id) REFERENCES `Itineraries` (`id`);
+ALTER TABLE Activity ADD FOREIGN KEY (`itinerary_id`) REFERENCES Itineraries (`id`);
 

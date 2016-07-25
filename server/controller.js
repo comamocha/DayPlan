@@ -38,6 +38,7 @@ module.exports = {
 
   list: {
     post: function(req, res) {
+      console.log(req.body.data, 'this is the req dataaaaaaaaaaaa')
       model.list.post(req.body.data)
       .then(function() {
         model.list.get();

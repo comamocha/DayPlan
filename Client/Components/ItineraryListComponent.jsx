@@ -32,8 +32,9 @@ class ItineraryListComponent extends React.Component {
     var self = this;
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
-        console.log(this.responseText);
-        
+        console.log(this.responseText, "this is the response test");
+        var p = JSON.parse(this.responseText);
+        console.log(p, "THIS IS THE PARSED TEXT")
         self.setState({
           itineraries: JSON.parse(this.responseText)
         })  
@@ -44,7 +45,7 @@ class ItineraryListComponent extends React.Component {
   }
 
   onItineraryClick(activities) {
-    console.log(typeof activities);
+    console.log(activities);
     this.props.updateActivities(activities);
   }
 
