@@ -32,6 +32,7 @@ class Login extends React.Component {
 
     handleSubmit(e) {
       console.log('username: ', this.state.username, '\npassword: ', this.state.password);
+      window.location = '/home';
     }
 
     handleSubmit(e) {
@@ -54,6 +55,7 @@ class Login extends React.Component {
       xhr.open("POST", "http://198.199.95.16:3000/login");
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.send(data);
+      window.location = '/home';
     }
 
     render() {
@@ -70,29 +72,7 @@ class Login extends React.Component {
               col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
             <form className="form-horizontal col-xs-8 col-xs-offset-2">
               <fieldset>
-                <div className="form-group">
-                  <label className="control-label">Username</label>
-                  <div>
-                    <input type="text" className="form-control" placeholder="Username" onChange={this.handleUsernameChange}/>
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label className="control-label">Password</label>
-                  <div>
-                    <input type="password" className="form-control" placeholder="Password" onChange={this.handlePasswordChange}/>
-                  </div>
-                </div>
-                <button className='signIn btn btn-success' type='button' onClick={this.handleSubmit}>Sign In!</button>
-                <div className="row">
-                  <label className="control-label">Not a member?</label>
-                </div>
-                <div className="row">
-                  <button className='signUp btn btn-danger'>Sign Up!</button>
-                </div>
-                <FacebookLogin className='btn'
-                    appId='226645441063163'
-                    autoLoad={true}
-                    callback={this.handleFBLogin} />
+                <button className='signIn btn btn-success' type='button' onClick={this.handleSubmit}>Enter Page!</button>
               </fieldset>
             </form>
           </div>
