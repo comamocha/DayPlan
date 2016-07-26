@@ -42,9 +42,9 @@ class ItineraryComponent extends React.Component {
     var data = "data=" + JSON.stringify({name: 'matt', list: this.props.list});
     var xhr = this.createXmlHttpRequestObject();
     xhr.withCredentials = false;
-    xhr.open("POST", "http://127.0.0.1:3000/list");
+    xhr.open("POST", "http:198.199.95.16:3000/list");
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send(data); 
+    xhr.send(data);
   }
 
   render() {
@@ -66,7 +66,7 @@ class ItineraryComponent extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.list.map(event => 
+            {this.props.list.map(event =>
               <ItineraryEvent key={event.key} eventInfo={event}
                 editEvent={this.props.editEvent}
                 deleteEvent={this.props.deleteEvent}/>
@@ -74,7 +74,7 @@ class ItineraryComponent extends React.Component {
         </tbody>
         </table>
         <div className="center-align">
-          <button className="btn btn-success" 
+          <button className="btn btn-success"
             onClick={this.saveItinerary.bind(this)}
           >Save Itinerary</button>
         </div>

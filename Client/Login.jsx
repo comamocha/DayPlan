@@ -34,13 +34,26 @@ class Login extends React.Component {
       console.log('username: ', this.state.username, '\npassword: ', this.state.password);
     }
 
-    handleFBLogin (response) {
-      console.log(response);
-      if (response.accessToken) {
-        window.location = '/home';
-      } else {
-        window.location = '/login';
-      }
+    handleSubmit(e) {
+      console.log('username: ', this.state.username, '\npassword: ', this.state.password);
+      var xhr = new XMLHttpRequest();
+      var data = "data=" + JSON.stringify({username: this.state.username, password: this.state.password});
+      xhr.withCredentials = false;
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          if (!!xhr.responseText) {
+            console.log('req.sessionID from inside Login.jsx is', xhr.responseText);
+            window.session = xhr.responseText;
+            console.log('window.session is', window.session);
+            window.location = '/home';
+          } else {
+            console.log('no redirect from sign in button');
+          }
+        }
+      };
+      xhr.open("POST", "http:198.199.95.16:3000/login");
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send(data);
     }
 
     render() {
@@ -53,7 +66,7 @@ class Login extends React.Component {
               Your browser doesn't support HTML5 video.
             </video>
           </div>
-          <div id="loginForm" className="col-xs-10 col-xs-offset-1 col-sm-8 
+          <div id="loginForm" className="col-xs-10 col-xs-offset-1 col-sm-8
               col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
             <form className="form-horizontal col-xs-8 col-xs-offset-2">
               <fieldset>

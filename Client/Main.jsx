@@ -54,7 +54,7 @@ class Main extends React.Component {
     var i = 0;
     this.state.list.forEach(function(val, key) {
       if (val['key'] !== eventId) {
-        val.key = i 
+        val.key = i
         i++;
         list.push(val);
       }
@@ -67,7 +67,7 @@ class Main extends React.Component {
     var i = 0;
     this.state.list.forEach(function(val, key) {
       if (val['key'] !== eventId) {
-        val.key = i; 
+        val.key = i;
         i++;
         list.push(val);
       }
@@ -91,10 +91,10 @@ class Main extends React.Component {
     var newList = [];
     this.state.list.forEach(function(val, key) {
     //iterate over original itinerary and add all non-edited events back as they were
-      if (val.key !== obj.key) {  
+      if (val.key !== obj.key) {
         newList.push(val);
       } else {
-        //this adds edited event to our rebuilt itinerary 
+        //this adds edited event to our rebuilt itinerary
         newList.push(obj)
       }
     });
@@ -111,7 +111,7 @@ class Main extends React.Component {
     var i = 0;
     this.state.list.forEach(function(val, key) {
       if (val['key'] !== eventId) {
-        val.key = i 
+        val.key = i
         i++;
         list.push(val);
       }
@@ -122,7 +122,7 @@ class Main extends React.Component {
   updateItineraryActivities(activities) {
     this.setState({list: activities})
   }
-   
+
   render() {
     //options contains our IToptions component w/functionality
     //if we are editing/creating an event then toggleOptions returns true
@@ -130,7 +130,7 @@ class Main extends React.Component {
 
     var options;
     if(this.state.toggleOptions) {
-      options= <ItineraryOptionsComponent 
+      options= <ItineraryOptionsComponent
                 event={this.state.list[this.state.eventId]}
                 deleteEvent={this.deleteEventOnOptions.bind(this)}
                 edit={this.receiveEditfromOptions.bind(this)}/>
@@ -147,9 +147,9 @@ class Main extends React.Component {
 
           <div id="itinerary" className="col-xs-12 col-md-6">
             <ItineraryComponent list={this.state.list} name={this.state.itineraryName}
-              deleteEvent={this.deleteEvent.bind(this)} 
+              deleteEvent={this.deleteEvent.bind(this)}
               editEvent={this.editEvent.bind(this)}/>
-          </div> 
+          </div>
 
         </div>
 
@@ -158,7 +158,7 @@ class Main extends React.Component {
           <MapComponent list={this.state.list}/>
         </div>
 
-        <div className="col-xs-12 col-md-5 col-md-offset-7" id="itineraryList">
+        <div className="col-xs-12 col-md-5 col-md-offset-1" id="itineraryList">
           <ItineraryListComponent updateActivities={this.updateItineraryActivities.bind(this)}/>
         </div>
 
