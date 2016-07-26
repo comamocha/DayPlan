@@ -33,14 +33,14 @@ class ItineraryListComponent extends React.Component {
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
         console.log(this.responseText);
-        
+
         self.setState({
           itineraries: JSON.parse(this.responseText)
-        })  
+        })
       }
     })
-    xhr.open("GET", "http://127.0.0.1:3000/list");
-    xhr.send(null); 
+    xhr.open("GET", "http://198.199.95.16:3000/list");
+    xhr.send(null);
   }
 
   onItineraryClick(activities) {
@@ -53,7 +53,7 @@ class ItineraryListComponent extends React.Component {
     if (!this.state.itineraries) {return null;}
     return this.state.itineraries.map(itin => {
       console.log(itin);
-     return( <tr className='itinerary'> 
+     return( <tr className='itinerary'>
         <td>{itin.name}</td>
         <td><button type="button" className="btn btn-xs btn-success" name="edit" onClick={this.onItineraryClick.bind(this, itin.activities)}>Open Itinerary</button></td>
       </tr> )

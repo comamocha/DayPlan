@@ -51,7 +51,7 @@ class Login extends React.Component {
           }
         }
       };
-      xhr.open("POST", "http:198.199.95.16:3000/login");
+      xhr.open("POST", "http://198.199.95.16:3000/login");
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.send(data);
     }
