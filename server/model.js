@@ -65,7 +65,7 @@ module.exports = {
     post: function(data) {
       var queryStr = "INSERT INTO Itineraries (name, activities) \
       VALUES ('" + data.name + "', '" + data.list + "')";
-​
+
       return query(queryStr)
     },
 
