@@ -13,52 +13,62 @@ db.connect(function(error) {
 
 module.exports = {
   signup: {
-    post: function(data) {
-      //check database for existing username
-        //if username is available add to our database
-        //if username is unavailable send status back to controller
-      query()
-    }
-  },
-  
-  login: {
-    permitLogin: function(data) {
-      console.log(data, '^^^^^^^^^^^^^^^');
-      query('SELECT password FROM Users WHERE Users.username = ' + "'" + data.user + "'")
+    permitSignup: function(data) {
+      return query('SELECT username FROM Users WHERE Users.username = ' + "'" + data.username + "'")
         .then(function(pass) {
-          console.log('Model login.permitLogin function returned', pass);
-          if (pass === data.pass) {
+          console.log('Model signup.permitSignup function returned', pass);
+          if (pass.length === 0) {
             return true;
           }
           return false;
         })
+    },
+
+    post: function(data) {
+      return query("INSERT INTO Users (username, password) VALUES ('" +
+                    data.username + "', '" + data.password + "')")
+      .then(query("SELECT * FROM Users WHERE Users.username = '" + data.username + "'")
+      .then(function(result) {
+        return result;
+      }))
     }
   },
-  
+
+  login: {
+    permitLogin: function(data) {
+      return query('SELECT * FROM Users WHERE Users.username = ' + "'" + data.username + "'")
+        .then(function(user) {
+          if (user.length === 0) {
+            return false;
+          }
+          return user;
+        })
+    }
+  },
+
   itinerary: {
     get: function(data) {
-     
+
     },
     post: function(data) {
 
     },
     put: function(data) {
- 
+
     },
     delete: function(data) {
- 
+
     }
   },
 
   list: {
     post: function(data) {
-      var parsed = JSON.parse(data);
       var queryStr = "INSERT INTO Itineraries (name, activities) \
-      VALUES ('" + parsed.name + "', '" + parsed.list + "')";
-
+      VALUES ('" + data.name + "', '" + data.list + "')";
+​
       return query(queryStr)
     },
-    
+
     get: function() {
       var queryString = "select * from Itineraries";
       return query(queryString)
@@ -71,12 +81,11 @@ module.exports = {
   **https://github.com/Yelp/yelp-api-v3
   *********************************/
 
-
   api: {
     yelp: {
-      //Variables 
+      //Variables
       variables: {
-        
+
         latitude: '37.786942',
         longitude: '-122.399643',
         client_id: 'VUXzKET78wCT7c3pNJUnBw',
@@ -103,7 +112,7 @@ module.exports = {
           }
         };
 
-        //Sending information back to Client 
+        //Sending information back to Client
         request(options, function (error, response, body) {
           if (error) throw new Error(error);
           //console.log("AutocompleteYelp sending back: ", body);
