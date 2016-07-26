@@ -2,6 +2,8 @@ var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var router = require('./router.js');
+var session = require('express-session');
+var history = require('connect-history-api-fallback');
 
 var app = express();
 var port = 3000;
@@ -11,6 +13,19 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use('/', router);
+app.use(history());
+
+app.use(session({
+  secret: 'foo',
+  resave: true,
+  domain: 'http://127.0.0.1:3000',
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 30,
+    httpOnly: false,
+    secure: true
+  }
+}))
 
 //Start Enable CORS:
 //http://enable-cors.org/server_expressjs.html
