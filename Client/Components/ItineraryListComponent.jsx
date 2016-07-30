@@ -39,7 +39,7 @@ class ItineraryListComponent extends React.Component {
         })
       }
     })
-    xhr.open("GET", "http://198.199.95.16:3000/list");
+    xhr.open("GET", "http://52.90.139.249:3000/list");
     xhr.send(null);
   }
 
