@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha  --compilers js:babel-register --recursive",
     "start": "webpack-dev-server --host 0.0.0.0 --hot --history-api-fallback",
-    "build": "webpack --progress --colors",
+    "build": "webpack --optimize-minimize --progress --colors",
     "copy": " cp ./Client/index.html ./server/ | cp ./Client/index.js ./server/ | cp ./Client/styles.css ./server/ ",
     "runserver": "npm run build && npm run copy"
   },
@@ -21,6 +21,7 @@
     "bluebird": "^3.4.1",
     "body-parser": "^1.15.2",
     "connect-history-api-fallback": "^1.2.0",
+    "cors": "^2.7.1",
     "express": "^4.14.0",
     "express-session": "^1.14.0",
     "google-maps-react": "^1.0.16",

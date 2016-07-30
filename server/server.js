@@ -4,9 +4,12 @@ var bodyParser = require('body-parser');
 var router = require('./router.js');
 var session = require('express-session');
 var history = require('connect-history-api-fallback');
+var cors = require('cors');
 
 var app = express();
 var port = 3000;
+
+app.use(cors());
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({

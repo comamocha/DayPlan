@@ -1,6 +1,6 @@
 import React from 'react';
 
-var yelpLocation = 'http://198.199.95.16:3000';
+var yelpLocation = 'http://52.90.139.249:3000';
 
 //Yelp Component renders yelp search form and results
 class YelpComponent extends React.Component {
@@ -14,8 +14,8 @@ class YelpComponent extends React.Component {
   }
 
 
-  //Renders review for business 
-  //ReviewsYelp -> 3 pics, 3 reviews, 
+  //Renders review for business
+  //ReviewsYelp -> 3 pics, 3 reviews,
   // /ReviewsYelp?search=hunan-homes-restaurant-san-francisco
   yelpReview(businessesId) {
     self = this;
@@ -36,8 +36,8 @@ class YelpComponent extends React.Component {
           <div>
           <h3>{businessesId} </h3>
           {businessesArray[0].user.name} says {businessesArray[0].text}
-          about 
-          
+          about
+
           </div>
         })
       }
@@ -63,16 +63,16 @@ class YelpComponent extends React.Component {
       if (this.readyState === 4) {
 
         //Todo: handle response codes from server
-        //304 = Not Modified (cached version), 200 =	OK, 404 = Not Found 
+        //304 = Not Modified (cached version), 200 =	OK, 404 = Not Found
         if (JSON.parse(this.responseText).total > 0) {
           var businessesArray = JSON.parse(this.responseText).businesses;
 
           //Iterates through the business Array results.
           //Sample returned Object:
-          //{"rating": 4.0, "image_url": "..", "name": "..", "phone": "", "url": "..", 
-          //"review_count": 2, "coordinates": {"latitude": 33, "longitude": 22}, "id": "..", 
-          //"categories": [{"alias": "theater", "title": "Performing Arts"}], "location": {"city": 
-          //"Daly City", "country": "US", "address2": "", "address3": "", "state": "CA", "address1": 
+          //{"rating": 4.0, "image_url": "..", "name": "..", "phone": "", "url": "..",
+          //"review_count": 2, "coordinates": {"latitude": 33, "longitude": 22}, "id": "..",
+          //"categories": [{"alias": "theater", "title": "Performing Arts"}], "location": {"city":
+          //"Daly City", "country": "US", "address2": "", "address3": "", "state": "CA", "address1":
           //"", "zip_code": "94016"}}
 
           var solution = [];
@@ -82,7 +82,7 @@ class YelpComponent extends React.Component {
             solutionObjects.push(businessesArray[i]);
             solution.push(
               <tr  placeholder={businessesArray[i].id}  onClick={self.props.addEvent.bind(self, businessesArray[i].location.address1 + ", " + businessesArray[i].location.city + ", " + businessesArray[i].location.state + " " + businessesArray[i].location.zip_code,
-                businessesArray[i].name, 
+                businessesArray[i].name,
                 businessesArray[i].coordinates)}>
                 <td> {businessesArray[i].name}  </td>
                 <td> {businessesArray[i].location.city} , {businessesArray[i].location.state} </td>
@@ -124,7 +124,7 @@ class YelpComponent extends React.Component {
       <div className="mainComponent">
         <h3 className="text-center">Plan Your Day</h3>
         <div className="text-center" className="col-xs-12">
-         
+
           <form>
             <div className="location">
               <input placeholder='San Francisco' onChange={event => this.onLocationChange(event.target.value) } />
@@ -132,7 +132,7 @@ class YelpComponent extends React.Component {
             <div className="search">
               <input placeholder='Golden Gate Bridge' onChange={event => this.onInputChange(event.target.value) } />
             </div>
-            
+
             <table className="table table-striped table-hover">
               <thead className="tableHeader">
                 <tr className="tableHeader">
@@ -140,7 +140,7 @@ class YelpComponent extends React.Component {
                   <th>Location</th>
                   <th>Address</th>
                   <th>Rating</th>
-                   
+
                 </tr>
               </thead>
               {this.state.results}
@@ -153,10 +153,10 @@ class YelpComponent extends React.Component {
           {this.state.currentOverlay}
         </div>
 
-      
 
 
- 
+
+
       </div>
 
     );
