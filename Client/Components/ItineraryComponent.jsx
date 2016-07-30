@@ -42,7 +42,7 @@ class ItineraryComponent extends React.Component {
     var data = "data=" + JSON.stringify({name: 'matt', list: this.props.list});
     var xhr = this.createXmlHttpRequestObject();
     xhr.withCredentials = false;
-    xhr.open("POST", "http://dayplan.us/list");
+    xhr.open("POST", "http://52.90.139.249:3000/list");
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send(data);
   }
