@@ -1,4 +1,4 @@
-# whatToDo
+# Dayplan.us
 Enable users to maximize free time through collaborative itineraries. 
 
 npm install
