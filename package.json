@@ -8,7 +8,7 @@
     "start": "webpack-dev-server --host 0.0.0.0 --hot --history-api-fallback",
     "build": "webpack --optimize-minimize --progress --colors",
     "copy": " cp ./Client/index.html ./server/ | cp ./Client/index.js ./server/ | cp ./Client/styles.css ./server/ ",
-    "runserver": "npm run build && npm run copy"
+    "runserver": "npm run build && npm run copy && node ./Client/server.js"
   },
   "author": "COMA",
   "license": "ISC",

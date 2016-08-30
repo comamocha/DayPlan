@@ -1,48 +1,54 @@
-# Dayplan.us
+## Dayplan.us
 Enable users to maximize free time through collaborative itineraries. 
 
-npm install
+Leverages Google MAPS and Yelp API to plan your itenerary. 
 
-npm start to host client files on port 8080
+![DayPlan](./assets/dayplanlogin.gif)
 
-localhost:8080 to look at our app
-
-#Frameworks and API 
-React 
-
-Yelp 3.0 API Developer Preview (realeased Mid July 2016)
-https://www.yelp.com/developers/v3/preview
-
-Google Maps API
+Checkout the [Live Website](http://dayplan.us).
 
 
 
-#Authentication
-FillMeIn
 
-#Backend
+##Stack
+
+###Frontend
+React v15.0
+
+https://facebook.github.io/react/blog/2016/04/07/react-v15.html
+
+
+
+###Backend
 Node and Express with MYSQL database. 
 
-#Deployment
-What:
-We choose Digital Ocean. 
-
-There is a docker container that can be used for quick development and deployment. 
 
 
-#Testing Framework
+##Testing Framework
+###Enzyme 
+[Enzyme] (https://github.com/airbnb/enzyme) is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.
 
-What:
+
+####What
  We choose to use Enzyme with Mocha and Chai. 
 
-Why: 
-Testing a React application is not a trivial task. We explored other options: Jest, Mocha , Manual testing, and No Tests. Enzyme proved to be  straightforward a robust enough for our needs. 
+####Why
+Testing a React application is not a trivial task. We explored other options: Jest, Mocha , Manual testing. Enzyme proved to be  straightforward a robust enough for our needs.
 
-Meta:
-A quick video introduction to the motivations behind Enzyme can be appreciated through this video: https://www.youtube.com/watch?v=V5N0Ukb8LGg
+##Developer
 
-How: 
-The following tutorials are good to get you started:
-http://airbnb.io/enzyme/docs/guides/mocha.html
-https://semaphoreci.com/community/tutorials/testing-react-components-with-enzyme-and-mocha
+To start the client
+
+```
+npm install
+npm start
+
+```
+
+---
+
+
+ComaMocha 2016 
+
+
 
