@@ -1,6 +1,6 @@
 import React from 'react';
 
-var yelpLocation = 'http://52.90.139.249:3000';
+var yelpLocation = 'http://localhost:3000';
 
 //Yelp Component renders yelp search form and results
 class YelpComponent extends React.Component {
