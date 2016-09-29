@@ -66,11 +66,18 @@ module.exports = {
       var queryStr = "INSERT INTO Itineraries (name, activities) \
       VALUES ('" + data.name + "', '" + data.list + "')";
 
-      return query(queryStr)
+
+      parsed.list.map(function(list) {
+        console.log(list);
+        query("INSERT INTO Activity (name, location, startTime, endTime, gps) \
+      VALUES ('" + list.name + "', '" + list.location + "', '" + list.begin + "', '" + list.end + "', '" + list.gps + "');")
+      })
+
+      return query(queryStr);
     },
 
     get: function() {
-      var queryString = "select * from Itineraries";
+      var queryString = "select * from Activity INNERJOIN Itineraries on Activity.itinerary_id = Itineraries.id;";
       return query(queryString)
     }
   },

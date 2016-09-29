@@ -6,7 +6,7 @@ class ItineraryListComponent extends React.Component {
     super(props);
 
     this.state = {
-      itineraries: [{key: 0, name: 'fun', list: [{fun: 'golden gate'}]}, {key: 1, name: 'More fun', list: [{fun: 'coit tower'}]}]
+      itineraries: [{key: 0, name: 'Go to the famous bridge!', activities: [{name: 'golden gate', begin: '8AM', end: '1PM', gps: {lat: 37.8199, long: 122.4783}}]}, {key: 1, name: 'Check out Coit Tower!', activities: [{name: 'coit tower', begin: '1:30PM', end: '4PM', gps: {lat: 37.8024, long: 122.4058}}]}]
     }
 
     this.getItinerary.bind(this);
@@ -33,27 +33,23 @@ class ItineraryListComponent extends React.Component {
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
         console.log(this.responseText);
-
         self.setState({
           itineraries: JSON.parse(this.responseText)
-        })
+        })  
       }
     })
-    xhr.open("GET", "http://52.90.139.249:3000/list");
-    xhr.send(null);
+    xhr.open("GET", "http://127.0.0.1:3000/list");
+    xhr.send(null); 
   }
 
   onItineraryClick(activities) {
-    console.log(typeof activities);
     this.props.updateActivities(activities);
   }
 
   renderItineraries() {
-    console.log(this.state.itineraries, '##########$#$#$#$#$#$#$#$#$#$#$')
     if (!this.state.itineraries) {return null;}
     return this.state.itineraries.map(itin => {
-      console.log(itin);
-     return( <tr className='itinerary'>
+     return( <tr className='itinerary'> 
         <td>{itin.name}</td>
         <td><button type="button" className="btn btn-xs btn-success" name="edit" onClick={this.onItineraryClick.bind(this, itin.activities)}>Open Itinerary</button></td>
       </tr> )
