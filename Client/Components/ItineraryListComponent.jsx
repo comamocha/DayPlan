@@ -47,7 +47,6 @@ class ItineraryListComponent extends React.Component {
   }
 
   renderItineraries() {
-    console.log(this.state.itineraries, '##########$#$#$#$#$#$#$#$#$#$#$')
     if (!this.state.itineraries) {return null;}
     return this.state.itineraries.map(itin => {
      return( <tr className='itinerary'> 
